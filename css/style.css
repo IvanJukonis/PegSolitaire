@@ -1,0 +1,73 @@
+body{
+    background-color:white;
+}
+  
+.content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+}
+  
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+#board{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #212121;
+    border-radius: 5px;
+    padding:40px;
+}
+
+.ball {
+    background-color: #34495E;
+    border: 2px solid #17202A;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+}
+  
+.empty {
+    background-color:#CCD1D1;
+    border: 2px solid #17202A;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+}
+  
+.hidden {
+    visibility: hidden;
+    border: 2px solid #17202A;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+}
+
+.ball:hover {
+    background-color: #7F8C8D;
+}
+
+/* not functional (yet) */
+.ballSelected{
+    background-color: #2ECC71;
+    border: 2px solid #17202A;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+}
