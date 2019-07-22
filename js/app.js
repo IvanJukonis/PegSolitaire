@@ -53,6 +53,50 @@ var generateBoard = function () {
 
 //#endregion
 
+//#region Ball Selection
+
+var selectedBall = { x: undefined, y: undefined }
+
+//Gives all balls the funciton selectBall (on click)
+var addBallsEventHandlers = function (Balls) {
+  for (let i = 0; i < Balls.length; i++) {
+    Balls[i].onclick = selectBall
+  }
+}
+
+//Change class "ballSelected" to class "ball" from a selectedBall
+var unselectBall = function () {
+  if (selectedBall.x !== undefined && selectedBall.y !== undefined) {
+    var prevSelectedId = createId(selectedBall.x, selectedBall.y)
+    document.getElementById(prevSelectedId).className = 'ball'
+  }
+}
+
+var selectBall = function (evt) {
+  //Get the ball clicked
+  var Ball = evt.target
+  //Obtain x and y positions from the ID
+  var idParts = Ball.id && Ball.id.length ? Ball.id.split('-') : []
+  if (idParts.length === 3) {
+    //In case of having a ball selected
+    unselectBall()
+    //In case of clicking the same ball twice
+    if (selectedBall.x === parseInt(idParts[1]) && selectedBall.y === parseInt(idParts[2])) {
+      unselectBall()
+      selectedBall.x = undefined
+      selectedBall.y = undefined
+    }
+    //Changes values from array selectedBall and  ball class
+    else {
+      selectedBall.x = parseInt(idParts[1])
+      selectedBall.y = parseInt(idParts[2])
+      Ball.className = 'ballSelected'
+    }
+  }
+}
+
+//#endregion
+
 //Init Function
 var init = function () {
   var boardElement = document.getElementById('board')
