@@ -146,12 +146,62 @@ var selectBall = function (evt) {
 
 //#endregion
 
+//#region Ball movement
+
+//Extract positions x and y from an id
+var getPositionFromId = function(id) {
+  var idParts = id && id.length ? id.split('-') : [] 
+  if (idParts.length === 3) {
+    return {
+      x: parseInt(idParts[1]),
+      y: parseInt(idParts[2])
+    }
+  }
+  return {}
+}
+
+var moveBall = function(evt) {
+  var id = evt.target.id
+  var pos = getPositionFromId(id)
+  if(pos.x !== undefined && pos.y !== undefined){
+    if(suggestions.includes(id)) /*if element is on array return true (include)*/{
+      //ball selected
+      var oldRow = selectedBall.x
+      var oldCol= selectedBall.y
+     //ball suggested
+      var newRow = pos.x
+      var newCol = pos.y
+      //middle ball
+      var midRow = oldRow + ((newRow - oldRow) / 2)
+      var midCol = oldCol + ((newCol - oldCol) / 2)
+      //changes array values
+      board[oldRow][oldCol] = {value: 0}
+      board[midRow][midCol] = {value: 0}
+      board[newRow][newCol] = {value: 1}
+
+      //reset
+      selectedBall = { x:undefined, y: undefined}
+      suggestions = []
+      init()
+    }
+  }
+}
+
+var addEmptyEventHandlers = function (empty) {
+  for (let i = 0; i < empty.length; i++) {
+    empty[i].onclick = moveBall
+  }
+}
+//#endregion
+
 //Init Function
 var init = function () {
   var boardElement = document.getElementById('board')
   boardElement.innerHTML = generateBoard()
   var Balls = boardElement.getElementsByClassName('ball')
   addBallsEventHandlers(Balls)
+  var empty = boardElement.getElementsByClassName('empty')
+  addEmptyEventHandlers(empty)
 }
   
 window.onload = init
