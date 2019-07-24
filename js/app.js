@@ -15,7 +15,7 @@ var createId = function (rowN, colN) {
   return 'ball-' + rowN + '-' + colN
 }
 
-//Create buttons inside a row with an id and a class
+//Create buttons inside a row with id and a class
 var generateCell = function (cell, rowN, colN) {
   var html = '<button id="' + createId(rowN, colN) + '" class="'
   if (cell && cell.value) {
@@ -53,9 +53,10 @@ var generateBoard = function () {
 
 //#endregion
 
-//#region Ball Selection
+//#region Ball selection and suggestions
 
 var selectedBall = { x: undefined, y: undefined }
+var suggestions = []
 
 //Gives all balls the funciton selectBall (on click)
 var addBallsEventHandlers = function (Balls) {
@@ -69,10 +70,57 @@ var unselectBall = function () {
   if (selectedBall.x !== undefined && selectedBall.y !== undefined) {
     var prevSelectedId = createId(selectedBall.x, selectedBall.y)
     document.getElementById(prevSelectedId).className = 'ball'
+    //change class suggestion to empty
+    var suggestions = document.getElementsByClassName('suggestions')
+    for (let i = 0; i < suggestions.length; i++) {
+      suggestions[i].className = 'empty'
+    }
+  }
+}
+
+//Returns inner html from element (need id)
+var getElement = function (id) {
+  var element = document.getElementById(id)
+  return element || {}
+}
+
+//executed on selectBall
+var showSuggestions = function () {
+  var near = {
+    //vars will contain inner html from buttons near
+    above: getElement(createId(selectedBall.x - 1, selectedBall.y)),
+    left: getElement(createId(selectedBall.x, selectedBall.y - 1)),
+    right: getElement(createId(selectedBall.x, selectedBall.y + 1)),
+    below: getElement(createId(selectedBall.x + 1, selectedBall.y))
+  }
+  var possible = {
+    //vars will contain inner html from buttos next to near
+    above: getElement(createId(selectedBall.x - 2, selectedBall.y)),
+    left: getElement(createId(selectedBall.x, selectedBall.y - 2)),
+    right: getElement(createId(selectedBall.x, selectedBall.y + 2)),
+    below: getElement(createId(selectedBall.x + 2, selectedBall.y))
+  }
+  //change class empty from var possible to suggestions and fill in the array suggestion
+  if (near.above.className === 'ball' && possible.above.className === 'empty') {
+    possible.above.className = 'suggestions'
+    suggestions.push(possible.above.id) /* save suggestions id into array*/
+  }
+  if (near.left.className === 'ball' && possible.left.className === 'empty') {
+    possible.left.className = 'suggestions'
+    suggestions.push(possible.left.id)
+  }
+  if (near.right.className === 'ball' && possible.right.className === 'empty') {
+    possible.right.className = 'suggestions'
+    suggestions.push(possible.right.id)
+  }
+  if (near.below.className === 'ball' && possible.below.className === 'empty') {
+    possible.below.className = 'suggestions'
+    suggestions.push(possible.below.id)
   }
 }
 
 var selectBall = function (evt) {
+  suggestions = []
   //Get the ball clicked
   var Ball = evt.target
   //Obtain x and y positions from the ID
@@ -91,6 +139,7 @@ var selectBall = function (evt) {
       selectedBall.x = parseInt(idParts[1])
       selectedBall.y = parseInt(idParts[2])
       Ball.className = 'ballSelected'
+      showSuggestions()
     }
   }
 }

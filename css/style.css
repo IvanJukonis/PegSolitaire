@@ -38,7 +38,7 @@ body{
 }
   
 .empty {
-    background-color:#CCD1D1;
+    background-color: #ffffff;
     border: 2px solid #17202A;
     width: 20px;
     height: 20px;
@@ -58,12 +58,21 @@ body{
 }
 
 .ball:hover {
-    background-color: #7F8C8D;
+    background-color: #B8FFAE;
 }
 
-/* not functional (yet) */
 .ballSelected{
-    background-color: #2ECC71;
+    background:#45EE00;
+    border: 2px solid #17202A;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+}
+
+.suggestions{
+    background-color:#E1E83A;
     border: 2px solid #17202A;
     width: 20px;
     height: 20px;
