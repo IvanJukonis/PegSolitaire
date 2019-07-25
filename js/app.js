@@ -20,6 +20,10 @@ var resetBoard = function (){
   ]
 }
 
+var loadBoard = function(){
+  board = JSON.parse(localStorage['board'])
+}
+
 //#region Generate Board
 
 //Returns string with row number and column number (used to make id)
@@ -214,6 +218,7 @@ var addButtonsEventHandlers = function (buttons) {
   }
 }
 
+
 var pressButton = function (evt){
   var id = evt.target.id
   if (id == 'resetBtn') {
@@ -223,7 +228,17 @@ var pressButton = function (evt){
     init()  
   }
   else if (id == 'saveBtn'){
-
+    var JSONreadyBoard = JSON.stringify(board);
+    localStorage.setItem('board', JSONreadyBoard);
+    console.log(JSON.parse(localStorage['board']))
+  }
+  else if (id == 'loadBtn'){
+    if (JSON.parse(localStorage['board']))  {
+    loadBoard(board)
+    selectedBall = { x:undefined, y: undefined}
+    suggestions = []
+    init()
+   }
   }
 }
 

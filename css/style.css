@@ -185,25 +185,3 @@ li:active {
       font-size:40px;
   }
 
-.toggle-btn{
-    width:40px;
-    height:20px;
-    background: #ccc;
-    border-radius: 15px;
-    padding: 2px
-}
-
-.toggle-btn > .inner-circle{
-    widows: 20px;
-    height: 20px;
-    background:white;
-    border-radius: 50%;
-}
-
-.toggle-btn.active {
-    background: #ef816c
-}
-
-.toggle-btn.active > .inner-circle {
-    margin-left: 20px; 
-}
