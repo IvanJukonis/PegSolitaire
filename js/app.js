@@ -8,6 +8,18 @@ var board = [
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined]
 ]
 
+var resetBoard = function (){
+  board = [
+    [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
+    [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
+    [{ value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }],
+    [{ value: 1 }, { value: 1 }, { value: 1 }, { value: 0 }, { value: 1 }, { value: 1 }, { value: 1 }],
+    [{ value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }, { value: 1 }],
+    [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
+    [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined]
+  ]
+}
+
 //#region Generate Board
 
 //Returns string with row number and column number (used to make id)
@@ -31,7 +43,7 @@ var generateCell = function (cell, rowN, colN) {
   return html
 }
 
-  //Creates label "row" and generates cells dependig on his lenght (board[i] lenght)
+//Creates label "row" and generates cells dependig on his lenght (board[i] lenght)
 var generateRow = function (row, rowN) {
   var html = '<div class="row">'
   for (let j = 0; j < row.length; j++) {
@@ -194,6 +206,31 @@ var addEmptyEventHandlers = function (empty) {
 }
 //#endregion
 
+//#region Buttons
+
+var addButtonsEventHandlers = function (buttons) {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].onclick = pressButton;
+  }
+}
+
+var pressButton = function (evt){
+  var id = evt.target.id
+  if (id == 'resetBtn') {
+    resetBoard()
+    selectedBall = { x:undefined, y: undefined}
+    suggestions = []
+    init()  
+  }
+  else if (id == 'saveBtn'){
+
+  }
+}
+
+
+
+//#endregion
+
 //Init Function
 var init = function () {
   var boardElement = document.getElementById('board')
@@ -202,6 +239,8 @@ var init = function () {
   addBallsEventHandlers(Balls)
   var empty = boardElement.getElementsByClassName('empty')
   addEmptyEventHandlers(empty)
+  var buttons = document.getElementsByClassName('menuBtn')
+  addButtonsEventHandlers(buttons)
 }
   
 window.onload = init
