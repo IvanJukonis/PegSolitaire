@@ -162,7 +162,18 @@ var selectBall = function (evt) {
 
 //#endregion
 
-//#region Ball movement
+//win popup function
+var win = function() {
+  var victory = document.getElementById('popupWin');
+    if (victory.className === 'popupHide') {
+      victory.className = 'popupShow';
+      }
+      else {
+        victory.className = 'popupHide';
+      }
+}
+
+//#region Ball movement and buttons
 
 //Extract positions x and y from an id
 var getPositionFromId = function(id) {
@@ -174,6 +185,13 @@ var getPositionFromId = function(id) {
     }
   }
   return {}
+}
+
+var points = 0
+var add = 10
+
+var changePoints = function(){ 
+  return '<h1>' + points + '</h1>'
 }
 
 var moveBall = function(evt) {
@@ -194,6 +212,11 @@ var moveBall = function(evt) {
       board[oldRow][oldCol] = {value: 0}
       board[midRow][midCol] = {value: 0}
       board[newRow][newCol] = {value: 1}
+      points = points + add
+      console.log(points)
+      if (points == 310){
+        win()
+      }
 
       //reset
       selectedBall = { x:undefined, y: undefined}
@@ -218,31 +241,46 @@ var addButtonsEventHandlers = function (buttons) {
   }
 }
 
-
 var pressButton = function (evt){
   var id = evt.target.id
   if (id == 'resetBtn') {
     resetBoard()
     selectedBall = { x:undefined, y: undefined}
     suggestions = []
+    points = 0
     init()  
   }
   else if (id == 'saveBtn'){
+    //Save board
     var JSONreadyBoard = JSON.stringify(board);
     localStorage.setItem('board', JSONreadyBoard);
     console.log(JSON.parse(localStorage['board']))
+    
+    //Save points
+    var JSONpoints = JSON.stringify(points);
+    localStorage.setItem('points', JSONpoints);
+    console.log(JSON.parse(localStorage['points']))
   }
   else if (id == 'loadBtn'){
     if (JSON.parse(localStorage['board']))  {
     loadBoard(board)
+    points = JSON.parse(localStorage['points'])
     selectedBall = { x:undefined, y: undefined}
     suggestions = []
     init()
    }
   }
+ /* else if (id == 'instBtn'){
+    var highscores = document.getElementById('show-highscore-popup');
+        console.log(highscores)
+        if (highscores.className === 'popup-inactive') {
+            highscores.className = 'popup-active';
+        }
+        else {
+            highscores.className = 'popup-inactive';
+        }
+  }*/
 }
-
-
 
 //#endregion
 
@@ -256,6 +294,8 @@ var init = function () {
   addEmptyEventHandlers(empty)
   var buttons = document.getElementsByClassName('menuBtn')
   addButtonsEventHandlers(buttons)
+  var pointsElement = document.getElementById('points')
+  pointsElement.innerHTML = changePoints()
 }
   
 window.onload = init

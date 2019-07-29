@@ -9,6 +9,16 @@
 </head>
 <body>
     <div class="content">
+        <div id="popupWin" class="popupHide">
+            <h1>YOU WIN! CONGRATULATIONS</h1>
+            <div class="score"></div>
+            <button class="btnPopup">Play Again</button>
+        </div>
+        <div id="popupLose" class="popupHide">
+            <h1>YOU LOSE =( </h1>
+            <div class="score"></div>
+            <button class="btnPopup">Play Again</button>
+        </div>
         <ul class="menu">
             <li class= "menuBtn" id="saveBtn">Save</li>
             <li class= "menuBtn" id="loadBtn">Load</li>
@@ -16,10 +26,7 @@
             <li class= "menuBtn" id="instBtn">Instruccions</li>
         </ul>
         <div id="board"></div>
-        <h1>Hard Mode</h1>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
+        <div id="points">
+        </div>
     </div> 
 </body>
