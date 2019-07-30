@@ -57,7 +57,7 @@ var generateRow = function (row, rowN) {
   return html
 }
   
-  //Creates label "game" and executes "generateRow" depending on board lenght (0-6)
+//Creates label "game" and executes "generateRow" depending on board lenght (0-6)
 var generateBoard = function () {
   var html = '<div class="game">'
   for (i = 0; i < board.length; i++) {
@@ -140,20 +140,20 @@ var selectBall = function (evt) {
   //Get the ball clicked
   var Ball = evt.target
   //Obtain x and y positions from the ID
-  var idParts = Ball.id && Ball.id.length ? Ball.id.split('-') : []
-  if (idParts.length === 3) {
+  var pos = getPositionFromId(Ball.id)
+  if (pos.x !== undefined && pos.y !== undefined) {
     //In case of having a ball selected
     unselectBall()
     //In case of clicking the same ball twice
-    if (selectedBall.x === parseInt(idParts[1]) && selectedBall.y === parseInt(idParts[2])) {
+    if (selectedBall.x === parseInt(pos.x) && selectedBall.y === parseInt(pos.y)) {
       unselectBall()
       selectedBall.x = undefined
       selectedBall.y = undefined
     }
     //Changes values from array selectedBall and  ball class
     else {
-      selectedBall.x = parseInt(idParts[1])
-      selectedBall.y = parseInt(idParts[2])
+      selectedBall.x = parseInt(pos.x)
+      selectedBall.y = parseInt(pos.y)
       Ball.className = 'ballSelected'
       showSuggestions()
     }
@@ -162,20 +162,14 @@ var selectBall = function (evt) {
 
 //#endregion
 
-//win popup function
-var win = function() {
-  var victory = document.getElementById('popupWin');
-    if (victory.className === 'popupHide') {
-      victory.className = 'popupShow';
-      }
-      else {
-        victory.className = 'popupHide';
-      }
+//#region Game result (Win or lose)
+
+var allSuggestions = []
+
+var refreshPage = function(){
+  location.reload()
 }
 
-//#region Ball movement and buttons
-
-//Extract positions x and y from an id
 var getPositionFromId = function(id) {
   var idParts = id && id.length ? id.split('-') : [] 
   if (idParts.length === 3) {
@@ -187,11 +181,81 @@ var getPositionFromId = function(id) {
   return {}
 }
 
-var points = 0
-var add = 10
+var getNearBall = function(x, y){
+  var near = {
+    above: getElement(createId(x - 1, y)),
+    left: getElement(createId(x, y - 1)),
+    right: getElement(createId(x, y + 1)),
+    below: getElement(createId(x + 1, y))
+  }
+  return near 
+}
+
+var getPossibleBall = function(x, y){
+  var possible = {
+    above: getElement(createId(x - 2, y)),
+    left: getElement(createId(x, y - 2)),
+    right: getElement(createId(x, y + 2)),
+    below: getElement(createId(x + 2, y))
+  }
+  return possible 
+}
+
+var checkResult = function () {
+  var balls = document.getElementsByClassName('ball')
+  allSuggestions = []
+  for (i = 0; i < balls.length; i++) {
+    var pos = getPositionFromId(balls[i].id)
+    if (pos.x !== undefined && pos.y !== undefined) {
+      var near = getNearBall(pos.x, pos.y)
+      var possible = getPossibleBall(pos.x, pos.y)
+      if (near.above.className === 'ball' && possible.above.className === 'empty') {
+        allSuggestions.push(possible.above.id)
+      }
+      if (near.left.className === 'ball' && possible.left.className === 'empty') {
+        allSuggestions.push(possible.left.id)
+      }
+      if (near.right.className === 'ball' && possible.right.className === 'empty') {
+        allSuggestions.push(possible.right.id)
+      }
+      if (near.below.className === 'ball' && possible.below.className === 'empty') {
+        allSuggestions.push(possible.below.id)
+      }
+    }
+  }
+  if(allSuggestions.length === 0){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+var addButtonPlayAgainEventHandlers = function (playAgain) {
+  for (let i = 0; i < playAgain.length; i++) {
+    playAgain[i].onclick = refreshPage
+  }
+}
+
+var showPopup = function(result) {
+  var popup = document.getElementById(result);
+    if (popup.className === 'popupHide') {
+      popup.className = 'popupShow';
+    }
+    else {
+      popup.className = 'popupHide';
+    }
+}
+
+//#endregion
+
+//#region Ball movement and points
+
+var currentPoints = 0
+var pointsPerMovemment = 10
 
 var changePoints = function(){ 
-  return '<h1>' + points + '</h1>'
+  return '<h1>' + currentPoints + '</h1>'
 }
 
 var moveBall = function(evt) {
@@ -212,16 +276,24 @@ var moveBall = function(evt) {
       board[oldRow][oldCol] = {value: 0}
       board[midRow][midCol] = {value: 0}
       board[newRow][newCol] = {value: 1}
-      points = points + add
-      console.log(points)
-      if (points == 310){
-        win()
-      }
-
+      //points
+      currentPoints = currentPoints + pointsPerMovemment
       //reset
       selectedBall = { x:undefined, y: undefined}
       suggestions = []
       init()
+    }
+    //Check if player won or lost
+    if (checkResult())
+    {
+      if (currentPoints == 310){
+        result = 'popupWin'
+        showPopup(result)
+      }
+      else{
+        result = 'popupLose'
+        showPopup(result)
+      }
     }
   }
 }
@@ -231,9 +303,10 @@ var addEmptyEventHandlers = function (empty) {
     empty[i].onclick = moveBall
   }
 }
+
 //#endregion
 
-//#region Buttons
+//#region Menu buttons
 
 var addButtonsEventHandlers = function (buttons) {
   for (let i = 0; i < buttons.length; i++) {
@@ -243,48 +316,41 @@ var addButtonsEventHandlers = function (buttons) {
 
 var pressButton = function (evt){
   var id = evt.target.id
+  //RESET BTN
   if (id == 'resetBtn') {
     resetBoard()
     selectedBall = { x:undefined, y: undefined}
     suggestions = []
-    points = 0
+    currentPoints = 0
     init()  
   }
+  //SAVE BTN
   else if (id == 'saveBtn'){
     //Save board
     var JSONreadyBoard = JSON.stringify(board);
     localStorage.setItem('board', JSONreadyBoard);
     console.log(JSON.parse(localStorage['board']))
-    
     //Save points
-    var JSONpoints = JSON.stringify(points);
-    localStorage.setItem('points', JSONpoints);
-    console.log(JSON.parse(localStorage['points']))
+    var JsoncurrentPoints = JSON.stringify(currentPoints);
+    localStorage.setItem('currentPoints', JsoncurrentPoints);
+    console.log(JSON.parse(localStorage['currentPoints']))
   }
+  //LOAD BTN
   else if (id == 'loadBtn'){
-    if (JSON.parse(localStorage['board']))  {
+    if (JSON.parse(localStorage['board'])) {
     loadBoard(board)
-    points = JSON.parse(localStorage['points'])
+    currentPoints = JSON.parse(localStorage['currentPoints'])
     selectedBall = { x:undefined, y: undefined}
     suggestions = []
     init()
-   }
+    }
   }
- /* else if (id == 'instBtn'){
-    var highscores = document.getElementById('show-highscore-popup');
-        console.log(highscores)
-        if (highscores.className === 'popup-inactive') {
-            highscores.className = 'popup-active';
-        }
-        else {
-            highscores.className = 'popup-inactive';
-        }
-  }*/
 }
 
 //#endregion
 
 //Init Function
+
 var init = function () {
   var boardElement = document.getElementById('board')
   boardElement.innerHTML = generateBoard()
@@ -296,6 +362,7 @@ var init = function () {
   addButtonsEventHandlers(buttons)
   var pointsElement = document.getElementById('points')
   pointsElement.innerHTML = changePoints()
+  var playAgain = document.getElementsByClassName('btnPopup')
+  addButtonPlayAgainEventHandlers(playAgain)
 }
-  
 window.onload = init
