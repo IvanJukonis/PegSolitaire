@@ -184,22 +184,22 @@ var refreshPage = function(){
 }
 
 //Open popup score
-var openPopupScore = function() {
+/*var openPopupScore = function() {
   
-}
+}*/
 
 //Buttons Handlers
-var addButtonPlayAgainEventHandlers = function (playAgain) {
-  for (let i = 0; i < playAgain.length; i++) {
-    playAgain[i].onclick = refreshPage
+var addButtonPopupResetEventHandlers = function (popupReset) {
+  for (let i = 0; i < popupReset.length; i++) {
+    popupReset[i].onclick = refreshPage
   }
 }
 
-var addButtonSavePointsEventHandlers = function (savePoints) {
-  for (let i = 0; i < savePoints.length; i++) {
-    savePoints[i].onclick = openForm
+/*var addButtonPopupSaveEventHandlers = function (popupSave) {
+  for (let i = 0; i < popupSave.length; i++) {
+    popupSave[i].onclick = openForm
   }
-}
+}*/
 
 //Check Result
 var getNearBall = function(x, y){
@@ -253,7 +253,7 @@ var checkResult = function () {
 }
 
 var popupScore = function(currentPoints){ 
-  finalScore = document.getElementsByClassName('finalScore') 
+  finalScore = document.getElementsByClassName('popup-final-score') 
   for (let i = 0; i < finalScore.length; i++) {;
     finalScore[i].innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
   }
@@ -261,23 +261,23 @@ var popupScore = function(currentPoints){
 
 var overlayAction = function() {
   overlay = document.getElementById('overlay')
-  if (overlay.className === 'overlayDisabled') {
-    overlay.className = 'overlayEnabled'
+  if (overlay.className === 'overlay-disabled') {
+    overlay.className = 'overlay-enabled'
   }
   else {
-    overlay.className = 'overlayDisabled'
+    overlay.className = 'overlay-disabled'
   }
 }
 
 var showPopup = function(result, currentPoints) {
   var popup = document.getElementById(result);
-    if (popup.className === 'popupHide') {
-      popup.className = 'popupShow';
+    if (popup.className === 'popup-hide') {
+      popup.className = 'popup-show';
       popupScore(currentPoints)
       overlayAction()
     }
     else {
-      popup.className = 'popupHide';
+      popup.className = 'popup-hide';
       popupScore(currentPoints)
       overlayAction()
     }
@@ -323,11 +323,11 @@ var moveBall = function(evt) {
     if (checkResult())
     {
       if (currentPoints == 310){
-        result = 'popupWin'
+        result = 'popup-win'
         showPopup(result, currentPoints)
       }
       else{
-        result = 'popupLose'
+        result = 'popup-lose'
         showPopup(result, currentPoints)
       }
     }
@@ -398,11 +398,11 @@ var init = function () {
   addEmptyEventHandlers(empty)
   var buttons = document.getElementsByClassName('menu-btn')
   addButtonsEventHandlers(buttons)
-  var pointsElement = document.getElementById('points')
-  pointsElement.innerHTML = changePoints()
-  var playAgain = document.getElementsByClassName('btnPopup')
-  addButtonPlayAgainEventHandlers(playAgain)
-  var savePoints = document.getElementsByClassName('btnPopupSave')
-  addButtonSavePointsEventHandlers(savePoints)
+  var finalScore = document.getElementById('points')
+  finalScore.innerHTML = changePoints()
+  var popupReset = document.getElementsByClassName('popup-reset-btn')
+  addButtonPopupResetEventHandlers(popupReset)
+  /*var popupSave = document.getElementsByClassName('popup-save-btn')
+  addButtonPopupSaveEventHandlers(popupSave)*/
 }
 window.onload = init

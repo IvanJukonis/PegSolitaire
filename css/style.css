@@ -124,7 +124,7 @@ li:active {
 }
 
 /* popup*/
-.popupHide {
+.popup-hide {
     position: absolute;
     visibility: hidden;
     top: 0px;
@@ -133,7 +133,7 @@ li:active {
     height: 0px;
 }
 
-.popupShow {
+.popup-show {
     position: absolute;
     visibility: visible;
     top: 40%;
@@ -143,7 +143,7 @@ li:active {
     border: 2px solid #000;
 }
 
-#popupWin{
+#popup-win{
     padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
     min-width: 80px;
@@ -155,7 +155,7 @@ li:active {
     font-weight: bold;
 }
 
-#popupLose{
+#popup-lose{
     text-align: center;
     padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
@@ -168,7 +168,7 @@ li:active {
     font-weight: bold;
 }
 
-.overlayDisabled {
+.overlay-disabled {
 	background: rgba(0,0,0,.3);
 	position: fixed;
 	top: 0;
@@ -181,7 +181,7 @@ li:active {
 	visibility: hidden;
 }
 
-.overlayEnabled {
+.overlaye-nabled {
     background: rgba(0,0,0,.3);
 	position: fixed;
 	top: 0;
