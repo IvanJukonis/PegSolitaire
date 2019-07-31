@@ -112,7 +112,7 @@ li:active {
 }
 
 #points{
-  padding: 1rem 2rem 1.15rem;
+    padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
     min-width: 80px;
     margin: auto;
@@ -141,4 +141,55 @@ li:active {
     width: 50%;
     background-color: #FFF;
     border: 2px solid #000;
+}
+
+#popupWin{
+    padding: 1rem 2rem 1.15rem;
+    text-transform: uppercase;
+    min-width: 80px;
+    margin: auto;
+    background-image: url('http://scottyzen.com/cp/button.png');
+    background-size: 100% 100%;
+    color: #27262c;
+    text-shadow: 0 -1px 0 #ef816c;
+    font-weight: bold;
+}
+
+#popupLose{
+    text-align: center;
+    padding: 1rem 2rem 1.15rem;
+    text-transform: uppercase;
+    min-width: 80px;
+    margin: auto;
+    background-image: url('http://scottyzen.com/cp/button.png');
+    background-size: 100% 100%;
+    color: #27262c;
+    text-shadow: 0 -1px 0 #ef816c;
+    font-weight: bold;
+}
+
+.overlayDisabled {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	visibility: hidden;
+}
+
+.overlayEnabled {
+    background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+    visibility: visible
 }

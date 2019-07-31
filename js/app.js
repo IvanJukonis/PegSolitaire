@@ -81,6 +81,18 @@ var addBallsEventHandlers = function (Balls) {
   }
 }
 
+//Return x and y positions
+var getPositionFromId = function(id) {
+  var idParts = id && id.length ? id.split('-') : [] 
+  if (idParts.length === 3) {
+    return {
+      x: parseInt(idParts[1]),
+      y: parseInt(idParts[2])
+    }
+  }
+  return {}
+}
+
 //Change class "ballSelected" to class "ball" from a selectedBall
 var unselectBall = function () {
   if (selectedBall.x !== undefined && selectedBall.y !== undefined) {
@@ -162,25 +174,34 @@ var selectBall = function (evt) {
 
 //#endregion
 
-//#region Game result (Win or lose)
+//#region Win or lose popup
 
 var allSuggestions = []
 
+//Reload Page
 var refreshPage = function(){
   location.reload()
 }
 
-var getPositionFromId = function(id) {
-  var idParts = id && id.length ? id.split('-') : [] 
-  if (idParts.length === 3) {
-    return {
-      x: parseInt(idParts[1]),
-      y: parseInt(idParts[2])
-    }
-  }
-  return {}
+//Redirect to formpoints.html
+var openForm = function() {
+  window.location = 'formpoints.html'
 }
 
+//Buttons Handlers
+var addButtonPlayAgainEventHandlers = function (playAgain) {
+  for (let i = 0; i < playAgain.length; i++) {
+    playAgain[i].onclick = refreshPage
+  }
+}
+
+var addButtonSavePointsEventHandlers = function (savePoints) {
+  for (let i = 0; i < savePoints.length; i++) {
+    savePoints[i].onclick = openForm
+  }
+}
+
+//Check Result
 var getNearBall = function(x, y){
   var near = {
     above: getElement(createId(x - 1, y)),
@@ -231,19 +252,34 @@ var checkResult = function () {
   }
 }
 
-var addButtonPlayAgainEventHandlers = function (playAgain) {
-  for (let i = 0; i < playAgain.length; i++) {
-    playAgain[i].onclick = refreshPage
+var popupScore = function(currentPoints){ 
+  finalScore = document.getElementsByClassName('finalScore') 
+  for (let i = 0; i < finalScore.length; i++) {;
+    finalScore[i].innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
   }
 }
 
-var showPopup = function(result) {
+var overlayAction = function() {
+  overlay = document.getElementById('overlay')
+  if (overlay.className === 'overlayDisabled') {
+    overlay.className = 'overlayEnabled'
+  }
+  else {
+    overlay.className = 'overlayDisabled'
+  }
+}
+
+var showPopup = function(result, currentPoints) {
   var popup = document.getElementById(result);
     if (popup.className === 'popupHide') {
       popup.className = 'popupShow';
+      popupScore(currentPoints)
+      overlayAction()
     }
     else {
       popup.className = 'popupHide';
+      popupScore(currentPoints)
+      overlayAction()
     }
 }
 
@@ -288,11 +324,11 @@ var moveBall = function(evt) {
     {
       if (currentPoints == 310){
         result = 'popupWin'
-        showPopup(result)
+        showPopup(result, currentPoints)
       }
       else{
         result = 'popupLose'
-        showPopup(result)
+        showPopup(result, currentPoints)
       }
     }
   }
@@ -349,8 +385,10 @@ var pressButton = function (evt){
 
 //#endregion
 
-//Init Function
 
+//FORM
+
+//Init Function
 var init = function () {
   var boardElement = document.getElementById('board')
   boardElement.innerHTML = generateBoard()
@@ -364,5 +402,7 @@ var init = function () {
   pointsElement.innerHTML = changePoints()
   var playAgain = document.getElementsByClassName('btnPopup')
   addButtonPlayAgainEventHandlers(playAgain)
+  var savePoints = document.getElementsByClassName('btnPopupSave')
+  addButtonSavePointsEventHandlers(savePoints)
 }
 window.onload = init
