@@ -181,7 +181,7 @@ li:active {
 	visibility: hidden;
 }
 
-.overlaye-nabled {
+.overlay-enabled {
     background: rgba(0,0,0,.3);
 	position: fixed;
 	top: 0;
