@@ -22,26 +22,24 @@
                 <button class="btnPopup">Play Again</button>
                 <button class="btnPopupSave">Save points</button>
             </div>
-            <div id="popupSavePoints" class="popupHide">
-                <form id="formSavePoints" action="#" method="post">
+            <div id="popupScore" class="popupHide">
+                <form id="formScore" action="#" method="post">
                     <div class="formBox" data-errormsg="">
                         <label for="inputName">Name</label>
                         <input type="text" id="inputName" autofocus placeholder="Name" tabindex="1"/>
                     </div>
-                    <h1 class="Date"></h1>
-                    <h1 class="savedPoints"></h1>
-                    <button id="buttonReset">Reset</button>
+                    <button id="buttonCancel">Cancel</button>
                     <button id="buttonSave">Save</button>
-                    <div class="finish"></div>
+                    <div class="endForm"></div>
                 </form> 
                 <button id="volve">Return</a>
             </div>
         </div>
         <ul class="menu">
-            <li class= "menuBtn" id="saveBtn">Save</li>
-            <li class= "menuBtn" id="loadBtn">Load</li>
-            <li class= "menuBtn" id="resetBtn">Reset</li>
-            <li class= "menuBtn" id="instBtn">Instruccions</li>
+            <li class= "menu-btn" id="menu-save-btn">Save</li>
+            <li class= "menu-btn" id="menu-load-btn">Load</li>
+            <li class= "menu-btn" id="menu-reset-btn">Reset</li>
+            <li class= "menu-btn" id="menu-instruccions-btn">Instruccions</li>
         </ul>
         <div id="board"></div>
         <div id="points"></div>

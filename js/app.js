@@ -183,9 +183,9 @@ var refreshPage = function(){
   location.reload()
 }
 
-//Redirect to formpoints.html
-var openForm = function() {
-  window.location = 'formpoints.html'
+//Open popup score
+var openPopupScore = function() {
+  
 }
 
 //Buttons Handlers
@@ -353,7 +353,7 @@ var addButtonsEventHandlers = function (buttons) {
 var pressButton = function (evt){
   var id = evt.target.id
   //RESET BTN
-  if (id == 'resetBtn') {
+  if (id == 'menu-reset-btn') {
     resetBoard()
     selectedBall = { x:undefined, y: undefined}
     suggestions = []
@@ -361,7 +361,7 @@ var pressButton = function (evt){
     init()  
   }
   //SAVE BTN
-  else if (id == 'saveBtn'){
+  else if (id == 'menu-save-btn'){
     //Save board
     var JSONreadyBoard = JSON.stringify(board);
     localStorage.setItem('board', JSONreadyBoard);
@@ -372,7 +372,7 @@ var pressButton = function (evt){
     console.log(JSON.parse(localStorage['currentPoints']))
   }
   //LOAD BTN
-  else if (id == 'loadBtn'){
+  else if (id == 'menu-load-btn'){
     if (JSON.parse(localStorage['board'])) {
     loadBoard(board)
     currentPoints = JSON.parse(localStorage['currentPoints'])
@@ -396,7 +396,7 @@ var init = function () {
   addBallsEventHandlers(Balls)
   var empty = boardElement.getElementsByClassName('empty')
   addEmptyEventHandlers(empty)
-  var buttons = document.getElementsByClassName('menuBtn')
+  var buttons = document.getElementsByClassName('menu-btn')
   addButtonsEventHandlers(buttons)
   var pointsElement = document.getElementById('points')
   pointsElement.innerHTML = changePoints()
