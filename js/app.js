@@ -253,12 +253,18 @@ var overlayAction = function() {
   }
 }
 
+var changeResult = function (result){
+  var text = document.getElementById('popup-text')
+  text.innerHTML = result
+}
+
 //Show or hide popup
 var popupAction = function(result, currentPoints) {
-  var popup = document.getElementById(result);
+  var popup = document.getElementById('popup-result');
     if (popup.className === 'popup-hide') {
       popup.className = 'popup-show';
       popupScore(currentPoints)
+      changeResult(result)
       overlayAction()
     }
     else {
@@ -274,30 +280,27 @@ var refreshPage = function(){
 }
 
 var addButtonPopupResetEventHandlers = function (popupReset) {
-  for (let i = 0; i < popupReset.length; i++) {
-    popupReset[i].onclick = refreshPage
-  }
+    popupReset.onclick = refreshPage
 }
 
+/*
+var openPopupScore = function() {
+  var popupwin = document.getElementById('popup-win')
+}
 
-//Open popup score
-/*var openPopupScore = function() {
-  
-}*/
-
-
-
-/*var addButtonPopupSaveEventHandlers = function (popupSave) {
+var addButtonPopupSaveEventHandlers = function (popupSave) {
   for (let i = 0; i < popupSave.length; i++) {
     popupSave[i].onclick = openForm
   }
-}*/
+}
+*/
 
 //#endregion
 
 //#region Ball movement and points
 
 var currentPoints = 0
+
 var pointsPerMovemment = 10
 
 var changePoints = function(){ 
@@ -332,12 +335,13 @@ var moveBall = function(evt) {
     //Check if player won or lost
     if (checkResult())
     {
+      console.log(checkResult())
       if (currentPoints == 310){
-        victory = 'popup-win'
+        victory = 'YOU WIN! CONGRATULATIONS'
         popupAction(victory, currentPoints)
       }
       else{
-        defeat = 'popup-lose'
+        defeat = 'YOU LOST! BETTER LUCK NEXT TIME'
         popupAction(defeat, currentPoints)
       }
     }
@@ -409,9 +413,9 @@ var init = function () {
   addButtonsEventHandlers(buttons)
   var finalScore = document.getElementById('points')
   finalScore.innerHTML = changePoints()
-  var popupReset = document.getElementsByClassName('popup-reset-btn')
+  var popupReset = document.getElementById('popup-reset-btn')
   addButtonPopupResetEventHandlers(popupReset)
-  /*var popupSave = document.getElementsByClassName('popup-save-btn')
+  /*var popupSave = document.getElementById('popup-save-btn')
   addButtonPopupSaveEventHandlers(popupSave)*/
 }
 window.onload = init

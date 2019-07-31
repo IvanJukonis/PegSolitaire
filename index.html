@@ -9,37 +9,31 @@
 </head>
 <body>
     <div class="content">
-        <div class="overlay-disabled" id="overlay">
-            <div id="popup-win" class="popup-hide">
-                <h1>YOU WIN! CONGRATULATIONS</h1>
+        <div id="overlay" class="overlay-disabled">
+            <div id="popup-result" class="popup-hide">
+                <h1 id="popup-text"></h1>
                 <div class="popup-final-score"></div>
-                <button class="popup-reset-btn">Play Again</button>
-                <button class="popup-save-btn">Save Score</button>
+                <button id="popup-reset-btn">Play Again</button>
+                <button id="popup-save-btn">Save Score</button>
             </div>
-            <div id="popup-lose" class="popup-hide">
-                <h1>YOU LOSE!</h1>
-                <div class="popup-final-score"></div>
-                <button class="popup-reset-btn">Play Again</button>
-                <button class="popup-save-btn">Save Score</button>
-            </div>
-            <div id="popupScore" class="popupHide">
-                <form id="formScore" action="#" method="post">
-                    <div class="formBox" data-errormsg="">
-                        <label for="inputName">Name</label>
-                        <input type="text" id="inputName" autofocus placeholder="Name" tabindex="1"/>
+            <div id="popup-score" class="popup-hide">
+                <form id="form-score" action="#" method="post">
+                    <div class="form-box" data-errormsg="">
+                        <label for="input-name">Name</label>
+                        <input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>
                     </div>
-                    <button id="buttonCancel">Cancel</button>
-                    <button id="buttonSave">Save</button>
-                    <div class="endForm"></div>
+                    <button id="form-cancel-btn">Cancel</button>
+                    <button id="form-save-btn">Save</button>
+                    <div class="form-end-text"></div>
                 </form> 
                 <button id="volve">Return</a>
             </div>
         </div>
         <ul class="menu">
-            <li class= "menu-btn" id="menu-save-btn">Save</li>
-            <li class= "menu-btn" id="menu-load-btn">Load</li>
-            <li class= "menu-btn" id="menu-reset-btn">Reset</li>
-            <li class= "menu-btn" id="menu-instruccions-btn">Instruccions</li>
+            <li id="menu-save-btn" class="menu-btn">Save</li>
+            <li id="menu-load-btn" class="menu-btn">Load</li>
+            <li id="menu-reset-btn" class="menu-btn">Reset</li>
+            <li id="menu-instruccions-btn" class="menu-btn">Instruccions</li>
         </ul>
         <div id="board"></div>
         <div id="points"></div>

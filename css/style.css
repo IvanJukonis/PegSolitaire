@@ -143,7 +143,7 @@ li:active {
     border: 2px solid #000;
 }
 
-#popup-win{
+#popup-result{
     padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
     min-width: 80px;
@@ -155,7 +155,7 @@ li:active {
     font-weight: bold;
 }
 
-#popup-lose{
+#popup-score{
     text-align: center;
     padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
