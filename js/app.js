@@ -283,17 +283,36 @@ var addButtonPopupResetEventHandlers = function (popupReset) {
     popupReset.onclick = refreshPage
 }
 
-/*
+var popupScoreShow = function (){
+  asd1 = '<form id="form-score" action="#" method="post">'
+  asd2 = '<div class="form-box" data-errormsg="">'
+  asd3 = '<label for="input-name">Name</label>'
+  asd4 = '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
+  asd5 = '<button id="form-save-btn">Save</button>'
+  asd6 = '</div>'
+  asd7 = '<div class="form-end-text"></div>'
+  asd8 = '</form>'
+  asd = asd1 + asd2 + asd3 + asd4 + asd5 + asd6 + asd7 + asd8
+  return asd
+
+}
+
 var openPopupScore = function() {
-  var popupwin = document.getElementById('popup-win')
+  var popupasd = document.getElementById('popup-result')
+  console.log(popupasd)
+  if (popupasd.className === 'popup-hide') {
+    popupasd.className = 'popup-show-form'
+  }
+  else {
+    popupasd.className = 'popup-hide'
+  }
+  popupasd.innerHTML = popupScoreShow()
 }
 
 var addButtonPopupSaveEventHandlers = function (popupSave) {
-  for (let i = 0; i < popupSave.length; i++) {
-    popupSave[i].onclick = openForm
-  }
+  popupSave.onclick = openPopupScore
 }
-*/
+
 
 //#endregion
 
@@ -415,7 +434,7 @@ var init = function () {
   finalScore.innerHTML = changePoints()
   var popupReset = document.getElementById('popup-reset-btn')
   addButtonPopupResetEventHandlers(popupReset)
-  /*var popupSave = document.getElementById('popup-save-btn')
-  addButtonPopupSaveEventHandlers(popupSave)*/
+  var popupSave = document.getElementById('popup-save-btn')
+  addButtonPopupSaveEventHandlers(popupSave)
 }
 window.onload = init
