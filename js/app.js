@@ -72,6 +72,7 @@ var generateBoard = function () {
 //#region Ball selection and suggestions
 
 var selectedBall = { x: undefined, y: undefined }
+
 var suggestions = []
 
 //Gives all balls the funciton selectBall (on click)
@@ -174,34 +175,11 @@ var selectBall = function (evt) {
 
 //#endregion
 
-//#region Win or lose popup
+//#region Check victory or defeat
 
 var allSuggestions = []
 
-//Reload Page
-var refreshPage = function(){
-  location.reload()
-}
-
-//Open popup score
-/*var openPopupScore = function() {
-  
-}*/
-
-//Buttons Handlers
-var addButtonPopupResetEventHandlers = function (popupReset) {
-  for (let i = 0; i < popupReset.length; i++) {
-    popupReset[i].onclick = refreshPage
-  }
-}
-
-/*var addButtonPopupSaveEventHandlers = function (popupSave) {
-  for (let i = 0; i < popupSave.length; i++) {
-    popupSave[i].onclick = openForm
-  }
-}*/
-
-//Check Result
+//Check if player won or lost
 var getNearBall = function(x, y){
   var near = {
     above: getElement(createId(x - 1, y)),
@@ -252,6 +230,11 @@ var checkResult = function () {
   }
 }
 
+//#endregion
+
+//#region Popup
+
+//Get score
 var popupScore = function(currentPoints){ 
   finalScore = document.getElementsByClassName('popup-final-score') 
   for (let i = 0; i < finalScore.length; i++) {;
@@ -259,6 +242,7 @@ var popupScore = function(currentPoints){
   }
 }
 
+//Show or hide overlay
 var overlayAction = function() {
   overlay = document.getElementById('overlay')
   if (overlay.className === 'overlay-disabled') {
@@ -269,7 +253,8 @@ var overlayAction = function() {
   }
 }
 
-var showPopup = function(result, currentPoints) {
+//Show or hide popup
+var popupAction = function(result, currentPoints) {
   var popup = document.getElementById(result);
     if (popup.className === 'popup-hide') {
       popup.className = 'popup-show';
@@ -282,6 +267,31 @@ var showPopup = function(result, currentPoints) {
       overlayAction()
     }
 }
+
+//Play again button
+var refreshPage = function(){
+  location.reload()
+}
+
+var addButtonPopupResetEventHandlers = function (popupReset) {
+  for (let i = 0; i < popupReset.length; i++) {
+    popupReset[i].onclick = refreshPage
+  }
+}
+
+
+//Open popup score
+/*var openPopupScore = function() {
+  
+}*/
+
+
+
+/*var addButtonPopupSaveEventHandlers = function (popupSave) {
+  for (let i = 0; i < popupSave.length; i++) {
+    popupSave[i].onclick = openForm
+  }
+}*/
 
 //#endregion
 
@@ -323,12 +333,12 @@ var moveBall = function(evt) {
     if (checkResult())
     {
       if (currentPoints == 310){
-        result = 'popup-win'
-        showPopup(result, currentPoints)
+        victory = 'popup-win'
+        popupAction(victory, currentPoints)
       }
       else{
-        result = 'popup-lose'
-        showPopup(result, currentPoints)
+        defeat = 'popup-lose'
+        popupAction(defeat, currentPoints)
       }
     }
   }
@@ -384,7 +394,6 @@ var pressButton = function (evt){
 }
 
 //#endregion
-
 
 //FORM
 
