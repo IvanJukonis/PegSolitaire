@@ -236,10 +236,8 @@ var checkResult = function () {
 
 //Get score
 var popupScore = function(currentPoints){ 
-  finalScore = document.getElementsByClassName('popup-final-score') 
-  for (let i = 0; i < finalScore.length; i++) {;
-    finalScore[i].innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
-  }
+  finalScore = document.getElementById('popup-final-score') 
+    finalScore.innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
 }
 
 //Show or hide overlay
@@ -283,6 +281,7 @@ var addButtonPopupResetEventHandlers = function (popupReset) {
     popupReset.onclick = refreshPage
 }
 
+//Open form
 var popupScoreShow = function (){
   asd1 = '<form id="form-score" action="#" method="post">'
   asd2 = '<div class="form-box" data-errormsg="">'
@@ -298,15 +297,16 @@ var popupScoreShow = function (){
 }
 
 var openPopupScore = function() {
+  var divForm = document.getElementById('inner-form')
   var popupasd = document.getElementById('popup-result')
   console.log(popupasd)
-  if (popupasd.className === 'popup-hide') {
+  if (popupasd.className === 'popup-show') {
     popupasd.className = 'popup-show-form'
   }
   else {
     popupasd.className = 'popup-hide'
   }
-  popupasd.innerHTML = popupScoreShow()
+  divForm.innerHTML = popupScoreShow()
 }
 
 var addButtonPopupSaveEventHandlers = function (popupSave) {
