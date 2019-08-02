@@ -30,8 +30,8 @@ body{
 .ball {
     background-color: #ef816c;
     border: 2px solid #17202A;
-    width: 30px;
-    height: 30px;
+    width: 10px;
+    height: 10px;
     border-radius: 20px;
     margin: 5px;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
@@ -81,21 +81,10 @@ body{
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
 }
 
-ul{
-    top: 0;
-	display: flex;
-	width: 100%;
-	height: 120px;
-	margin: auto;
-	max-width: 1000px;
-	justify-content: space-between;
-    text-align: center;
-    align-content: center;
-}
-
 .menu{
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-self: center;
 }
@@ -149,20 +138,16 @@ ul{
     position: absolute;
     visibility: visible;
     top: 40%;
-    left: 25%;
     width: 50%;
     background-color: #FFF;
-    
 }
 
 .popup-show-form {
     position: absolute;
     visibility: visible;
     top: 40%;
-    left: 25%;
     width: 50%;
     background-color: #FFF;
-    
 }
 
 #popup-result{
@@ -182,15 +167,26 @@ ul{
 #popup-ranking{
     padding: 1rem 2rem 1.15rem;
     background: transparent;
+    align-content: center;
     text-align:center;
     text-transform: uppercase;
-    min-width: 80px;
+    height: 10%;
+    width: 10%;
     margin: auto;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
     color: #27262c;
     text-shadow: 0 -1px 0 #ef816c;
     font-weight: bold;
+}
+
+ul{
+    top: 0;
+    display: flex;
+    flex-direction: row;
+	justify-content: center;
+    text-align: center;
+    align-content: center;
 }
 
 .overlay-disabled {
@@ -216,5 +212,45 @@ ul{
 	align-items: center;
 	justify-content: center;
 	display: flex;
-    visibility: visible
+    visibility: visible;
+}
+
+@media (min-width:480px) {
+    #board button {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+    }
+}
+
+@media (min-width:768px) {
+    #board button {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+    }
+}
+
+@media (min-width:900px) {
+    #board button {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+    }
+}
+
+@media (min-width:1024px) {
+    #board button {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+    }
+}
+
+@media (min-width:1200px) {
+    #board button {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+    }
 }
