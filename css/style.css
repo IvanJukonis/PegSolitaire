@@ -93,11 +93,23 @@ ul{
     align-content: center;
 }
 
-li {
+.menu{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+.menu button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 	padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
-    min-width: 80px;
-    margin: auto;
+    min-width: 200px;
+    background: transparent;
+    border: none;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
     color: #27262c;
@@ -107,7 +119,7 @@ li {
     cursor: pointer;
 }
 
-li:active {
+.menu button:active {
   transform: translateY(4px);
 }
 
