@@ -304,10 +304,10 @@ var getDateToSave = function() {
   var dd = date.getDate()
   var mm = (date.getMonth() + 1)
   if(dd < 10) {
-      dd = '0' + dd
+    dd = '0' + dd
   }
   if(mm < 10) {
-      mm = '0' + mm
+    mm = '0' + mm
   }
   var todayDate = yyyy + '-' + mm + '-' + dd
   return todayDate
@@ -316,6 +316,25 @@ var getDateToSave = function() {
 //Order ranking by score and then by date
 var rankingOrder = function(a, b) {
   return b.score - a.score || new Date(b.date) - new Date(a.date) 
+}
+
+var saveScore = function(){
+  var nameTxt = document.getElementById('input-name').value
+  if(nameTxt.length < 3) {
+    alert('Name length invalid')
+  }
+  var newScore = {
+    name: nameTxt,
+    score: currentPoints,
+    date: getDateToSave()
+  }
+  savedScores.push(newScore)
+  savedScores.sort(rankingOrder)
+  if(savedScores.length > 7) {
+    savedScores = savedScores.slice(0,7)
+  }
+  localStorage.setItem('savedScores', JSON.stringify(savedScores))
+  overlayAction()
 }
 
 var openPopupScore = function() {
@@ -330,12 +349,12 @@ var openPopupScore = function() {
   divForm.innerHTML = popupScoreShow()
 }
 
-//boton guardar partida
+//Save btn from popup
 var addButtonPopupSaveEventHandlers = function (popupSave) {
   popupSave.onclick = openPopupScore
 }
 
-//boton guardar partida (form)
+//Save btn from form
 var formBtn = function(){
   var formBtnSave = document.getElementById('form-save-btn')
   addbtnFormEventHandlers(formBtnSave)
