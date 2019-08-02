@@ -234,6 +234,8 @@ var checkResult = function () {
 
 //#region Popup
 
+var savedScores = []
+
 //Show or hide overlay
 var overlayAction = function() {
   overlay = document.getElementById('overlay')
@@ -284,16 +286,36 @@ var addButtonPopupResetEventHandlers = function (popupReset) {
 
 //Open form
 var popupScoreShow = function (){
-  asd1 = '<form id="form-score">'
-  asd2 = '<div class="form-box" data-errormsg="">'
-  asd3 = '<label for="input-name">Name</label>'
-  asd4 = '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
-  asd5 = '<button id="form-save-btn">Save</button>'
-  asd6 = '</div>'
-  asd7 = '<div class="form-end-text"></div>'
-  asd8 = '</form>'
-  asd = asd1 + asd2 + asd3 + asd4 + asd5 + asd6 + asd7 + asd8
-  return asd
+  var html = '<form id="form-score">'
+  html += '<div class="form-box" data-errormsg="">'
+  html += '<label for="input-name">Name</label>'
+  html += '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
+  html += '</div>'
+  html += '<div class="form-end-text"></div>'
+  html += '</form>'
+  html += '<button id="form-save-btn">Save</button>'
+  return html
+}
+
+//Get today date to save on ranking
+var getDateToSave = function() {
+  var date = new Date()
+  var yyyy = date.getFullYear()
+  var dd = date.getDate()
+  var mm = (date.getMonth() + 1)
+  if(dd < 10) {
+      dd = '0' + dd
+  }
+  if(mm < 10) {
+      mm = '0' + mm
+  }
+  var todayDate = yyyy + '-' + mm + '-' + dd
+  return todayDate
+}
+
+//Order ranking by score and then by date
+var rankingOrder = function(a, b) {
+  return b.score - a.score || new Date(b.date) - new Date(a.date) 
 }
 
 var openPopupScore = function() {
