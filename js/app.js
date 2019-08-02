@@ -234,12 +234,6 @@ var checkResult = function () {
 
 //#region Popup
 
-//Get score
-var popupScore = function(currentPoints){ 
-  finalScore = document.getElementById('popup-final-score') 
-    finalScore.innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
-}
-
 //Show or hide overlay
 var overlayAction = function() {
   overlay = document.getElementById('overlay')
@@ -251,9 +245,16 @@ var overlayAction = function() {
   }
 }
 
+//Get text
 var changeResult = function (result){
   var text = document.getElementById('popup-text')
   text.innerHTML = result
+}
+
+//get score
+var popupScore = function(currentPoints){ 
+  finalScore = document.getElementById('popup-final-score') 
+  finalScore.innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
 }
 
 //Show or hide popup
@@ -283,7 +284,7 @@ var addButtonPopupResetEventHandlers = function (popupReset) {
 
 //Open form
 var popupScoreShow = function (){
-  asd1 = '<form id="form-score" action="#" method="post">'
+  asd1 = '<form id="form-score">'
   asd2 = '<div class="form-box" data-errormsg="">'
   asd3 = '<label for="input-name">Name</label>'
   asd4 = '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
@@ -293,13 +294,11 @@ var popupScoreShow = function (){
   asd8 = '</form>'
   asd = asd1 + asd2 + asd3 + asd4 + asd5 + asd6 + asd7 + asd8
   return asd
-
 }
 
 var openPopupScore = function() {
   var divForm = document.getElementById('inner-form')
   var popupasd = document.getElementById('popup-result')
-  console.log(popupasd)
   if (popupasd.className === 'popup-show') {
     popupasd.className = 'popup-show-form'
   }
@@ -309,10 +308,16 @@ var openPopupScore = function() {
   divForm.innerHTML = popupScoreShow()
 }
 
+//boton guardar partida
 var addButtonPopupSaveEventHandlers = function (popupSave) {
   popupSave.onclick = openPopupScore
 }
 
+//boton guardar partida (form)
+var formBtn = function(){
+  var formBtnSave = document.getElementById('form-save-btn')
+  addbtnFormEventHandlers(formBtnSave)
+}
 
 //#endregion
 
@@ -414,7 +419,19 @@ var pressButton = function (evt){
     init()
     }
   }
+  /*else if (id == 'menu-instruccions-btn'){
+    var newpopup = document.getElementById('popup-ranking')
+    if (newpopup.className === 'popup-hide') {
+      newpopup.className = 'popup-show';
+    }
+    else {
+      newpopup.className = 'popup-hide';
+    }
+    ranking = JSON.parse(localStorage['asd'])
+    rankingInnerHTML(ranking)
+  } */
 }
+
 
 //#endregion
 

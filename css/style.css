@@ -167,6 +167,20 @@ li:active {
     font-weight: bold;
 }
 
+#popup-ranking{
+    padding: 1rem 2rem 1.15rem;
+    background: transparent;
+    text-align:center;
+    text-transform: uppercase;
+    min-width: 80px;
+    margin: auto;
+    background-image: url('http://scottyzen.com/cp/button.png');
+    background-size: 100% 100%;
+    color: #27262c;
+    text-shadow: 0 -1px 0 #ef816c;
+    font-weight: bold;
+}
+
 .overlay-disabled {
 	background: rgba(0,0,0,.3);
 	position: fixed;
