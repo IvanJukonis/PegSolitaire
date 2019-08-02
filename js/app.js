@@ -275,14 +275,23 @@ var popupAction = function(result, currentPoints) {
     }
 }
 
-//Play again button
+
 var refreshPage = function(){
   location.reload()
 }
 
+//Play again button from popup
 var addButtonPopupResetEventHandlers = function (popupReset) {
     popupReset.onclick = refreshPage
 }
+
+//Save btn from form
+var formBtn = function(){
+  var formBtnSave = document.getElementById('form-save-btn')
+  addbtnFormEventHandlers(formBtnSave)
+}
+
+//#region Popup --> Score functionality
 
 //Open form
 var popupScoreShow = function (){
@@ -318,6 +327,7 @@ var rankingOrder = function(a, b) {
   return b.score - a.score || new Date(b.date) - new Date(a.date) 
 }
 
+//Score 
 var saveScore = function(){
   var nameTxt = document.getElementById('input-name').value
   if(nameTxt.length < 3) {
@@ -337,27 +347,43 @@ var saveScore = function(){
   overlayAction()
 }
 
-var openPopupScore = function() {
-  var divForm = document.getElementById('inner-form')
-  var popupasd = document.getElementById('popup-result')
-  if (popupasd.className === 'popup-show') {
-    popupasd.className = 'popup-show-form'
+var loadSavedScores = function() {
+  savedScores =  JSON.parse(localStorage.getItem('savedScores'))
+  if(savedScores === null) {
+    savedScores = []
   }
-  else {
-    popupasd.className = 'popup-hide'
-  }
-  divForm.innerHTML = popupScoreShow()
 }
 
-//Save btn from popup
-var addButtonPopupSaveEventHandlers = function (popupSave) {
-  popupSave.onclick = openPopupScore
+var generateScoreTable = function() {
+  var html = '<ul>'
+  for(let i = 0; i < savedScores.length; i++) {
+    html += '<li>'
+    html += savedScores[i].name + ' ' + savedScores[i].score + ' ' + savedScores[i].date
+    html += '</li>'
+  }
+  html += '</ul>'
+  return html
+}
+
+//#endregion
+
+var openPopupScore = function() {
+  var divForm = document.getElementById('inner-form')
+  var popupResult = document.getElementById('popup-result')
+  console.log(popupResult)
+  if (popupResult.className === 'popup-show') {
+    popupResult.className = 'popup-show-form'
+  }
+  else {
+    popupResult.className = 'popup-hide'
+  }
+  divForm.innerHTML = popupScoreShow()
+  document.getElementById('form-save-btn').onclick = saveScore
 }
 
 //Save btn from form
-var formBtn = function(){
-  var formBtnSave = document.getElementById('form-save-btn')
-  addbtnFormEventHandlers(formBtnSave)
+var addButtonPopupSaveEventHandlers = function (popupSave) {
+  popupSave.onclick = openPopupScore
 }
 
 //#endregion
@@ -460,7 +486,7 @@ var pressButton = function (evt){
     init()
     }
   }
-  /*else if (id == 'menu-instruccions-btn'){
+  else if (id == 'menu-instruccions-btn'){
     var newpopup = document.getElementById('popup-ranking')
     if (newpopup.className === 'popup-hide') {
       newpopup.className = 'popup-show';
@@ -468,9 +494,8 @@ var pressButton = function (evt){
     else {
       newpopup.className = 'popup-hide';
     }
-    ranking = JSON.parse(localStorage['asd'])
-    rankingInnerHTML(ranking)
-  } */
+    newpopup.innerHTML = generateScoreTable()
+  }
 }
 
 
@@ -494,5 +519,6 @@ var init = function () {
   addButtonPopupResetEventHandlers(popupReset)
   var popupSave = document.getElementById('popup-save-btn')
   addButtonPopupSaveEventHandlers(popupSave)
+  loadSavedScores()
 }
 window.onload = init
