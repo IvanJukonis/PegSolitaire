@@ -256,7 +256,7 @@ var changeResult = function (result){
 //get score
 var popupScore = function(currentPoints){ 
   finalScore = document.getElementById('popup-final-score') 
-  finalScore.innerHTML = '<h1 class="popup-result-text"> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
+  finalScore.innerHTML = '<p class="popup-result-text"> Your final score is: ' + currentPoints + ' !Great Job!</p>'
 }
 
 //Show or hide popup
@@ -356,7 +356,7 @@ var loadSavedScores = function() {
 
 var generateScoreTable = function() {
   var html = '<ul>'
-  html += '<h1 class="ranking-text"> Top 7 BEST SCORES </h1>'
+  html += '<p class="ranking-text"> Top 7 BEST SCORES </p>'
   for(let i = 0; i < savedScores.length; i++) {
     html += '<li>'
     html += 'Name: ' + savedScores[i].name + ' | Score: ' + savedScores[i].score + ' | Date: ' + savedScores[i].date
@@ -487,7 +487,7 @@ var pressButton = function (evt){
     init()
     }
   }
-  else if (id == 'menu-instruccions-btn'){
+  else if (id == 'menu-ranking-btn'){
     var newpopup = document.getElementById('popup-ranking')
     if (newpopup.className === 'popup-hide') {
       newpopup.className = 'popup-show';
@@ -496,6 +496,7 @@ var pressButton = function (evt){
       newpopup.className = 'popup-hide';
     }
     newpopup.innerHTML = generateScoreTable()
+    overlayAction()
   }
 }
 
