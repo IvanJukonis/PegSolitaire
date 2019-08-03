@@ -232,7 +232,7 @@ var checkResult = function () {
 
 //#endregion
 
-//#region Popup
+//#region Popup result, form and ranking
 
 var savedScores = []
 
@@ -387,7 +387,19 @@ var addButtonPopupSaveEventHandlers = function (popupSave) {
   popupSave.onclick = openPopupScore
 }
 
+var returnToPage = function (){
+  var popUpClose = document.getElementById('popup-ranking')
+  if (popUpClose.className === 'popup-show') {
+    popUpClose.className = 'popup-hide';
+  }
+  else {
+    popUpClose.className = 'popup-hide';
+  }
+  overlayAction()
+}
+
 //#endregion
+
 
 //#region Ball movement and points
 
@@ -487,15 +499,17 @@ var pressButton = function (evt){
     init()
     }
   }
+  //RANKING BTN
   else if (id == 'menu-ranking-btn'){
     var newpopup = document.getElementById('popup-ranking')
+    var innerPopup = document.getElementById('popup-ranking-inner')
     if (newpopup.className === 'popup-hide') {
       newpopup.className = 'popup-show';
     }
     else {
       newpopup.className = 'popup-hide';
     }
-    newpopup.innerHTML = generateScoreTable()
+    innerPopup.innerHTML = generateScoreTable()
     overlayAction()
   }
 }
@@ -521,6 +535,8 @@ var init = function () {
   addButtonPopupResetEventHandlers(popupReset)
   var popupSave = document.getElementById('popup-save-btn')
   addButtonPopupSaveEventHandlers(popupSave)
+  var rankingReturn = document.getElementById('popup-ranking-btn')
+  rankingReturn.onclick = returnToPage
   loadSavedScores()
 }
 window.onload = init
