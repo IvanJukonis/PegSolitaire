@@ -1,26 +1,59 @@
-body{
+body {
     background-color:rgb(43, 45, 56);
 }
   
 .content {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
+    width: 100%;
 }
 
-.game{
+.header {
+
+}
+
+.menu {
     display: flex;
+    position: relative; 
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-self: center;
+}
+
+.menu button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+	padding: 1rem 2rem 1.15rem;
+    text-transform: uppercase;
+    min-width: 200px;
+    background: transparent;
+    border: none;
+    background-image: url('http://scottyzen.com/cp/button.png');
+    background-size: 100% 100%;
+    color: #27262c;
+    animation: spring 300ms ease-out;
+    text-shadow: 0 -1px 0 #ef816c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu button:active {
+  transform: translateY(4px);
+}
+
+#board {
+    display: flex;
+    margin: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding:40px;
 }
 
-#board{
+.game {
     display: flex;
-    margin: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -61,7 +94,7 @@ body{
     background-color: rgb(255, 116, 2);
 }
 
-.ballSelected{
+.ballSelected {
     background-color: rgb(255, 81, 0);
     border: 2px solid #17202A;
     width: 30px;
@@ -71,7 +104,7 @@ body{
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
 }
 
-.suggestions{
+.suggestions {
     background-color:rgb(41, 60, 145);
     border: 2px solid #17202A;
     width: 30px;
@@ -81,38 +114,7 @@ body{
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
 }
 
-.menu{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-self: center;
-}
-
-.menu button {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-	padding: 1rem 2rem 1.15rem;
-    text-transform: uppercase;
-    min-width: 200px;
-    background: transparent;
-    border: none;
-    background-image: url('http://scottyzen.com/cp/button.png');
-    background-size: 100% 100%;
-    color: #27262c;
-    animation: spring 300ms ease-out;
-    text-shadow: 0 -1px 0 #ef816c;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.menu button:active {
-  transform: translateY(4px);
-}
-
-#points{
+#points {
     padding: 1rem 2rem 1.15rem;
     text-transform: uppercase;
     min-width: 80px;
@@ -122,69 +124,6 @@ body{
     color: #27262c;
     text-shadow: 0 -1px 0 #ef816c;
     font-weight: bold;
-}
-
-/* popup*/
-.popup-hide {
-    position: absolute;
-    visibility: hidden;
-    top: 0px;
-    left: 0px;
-    width: 0px;
-    height: 0px;
-}
-
-.popup-show {
-    position: absolute;
-    visibility: visible;
-    top: 40%;
-    width: 50%;
-    background-color: #FFF;
-}
-
-.popup-show-form {
-    position: absolute;
-    visibility: visible;
-    top: 40%;
-    width: 50%;
-    background-color: #FFF;
-}
-
-#popup-result{
-    padding: 1rem 2rem 1.15rem;
-    background: transparent;
-    text-align:center;
-    text-transform: uppercase;
-    min-width: 80px;
-    margin: auto;
-    background-image: url('http://scottyzen.com/cp/button.png');
-    background-size: 100% 100%;
-    color: #27262c;
-    text-shadow: 0 -1px 0 #ef816c;
-    font-weight: bold;
-}
-
-#popup-ranking{
-    padding: 1rem 2rem 1.15rem;
-    background: transparent;
-    align-content: center;
-    text-align:center;
-    text-transform: uppercase;
-    margin: auto;
-    background-image: url('http://scottyzen.com/cp/button.png');
-    background-size: 100% 100%;
-    color: #27262c;
-    text-shadow: 0 -1px 0 #ef816c;
-    font-weight: bold;
-}
-
-ul{
-    top: 0;
-    display: flex;
-    flex-direction: column;
-	justify-content: center;
-    text-align: center;
-    align-content: center;
 }
 
 .overlay-disabled {
@@ -211,6 +150,72 @@ ul{
 	justify-content: center;
 	display: flex;
     visibility: visible;
+}
+
+.popup-hide {
+    position: absolute;
+    visibility: hidden;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+}
+
+.popup-show {
+    position: absolute;
+    visibility: visible;
+    top: 40%;
+    width: 50%;
+    background-color: #FFF;
+}
+
+.popup-show-form {
+    position: absolute;
+    visibility: visible;
+    top: 40%;
+    width: 50%;
+    background-color: #FFF;
+}
+
+#popup-result {
+    padding: 1rem 2rem 1.15rem;
+    background: transparent;
+    text-align:center;
+    text-transform: uppercase;
+    min-width: 80px;
+    margin: auto;
+    background-image: url('http://scottyzen.com/cp/button.png');
+    background-size: 100% 100%;
+    color: #27262c;
+    text-shadow: 0 -1px 0 #ef816c;
+    font-weight: bold;
+}
+
+#popup-ranking {
+    padding: 1rem 2rem 1.15rem;
+    background: transparent;
+    align-content: center;
+    text-align:center;
+    text-transform: uppercase;
+    margin: auto;
+    background-image: url('http://scottyzen.com/cp/button.png');
+    background-size: 100% 100%;
+    color: #27262c;
+    text-shadow: 0 -1px 0 #ef816c;
+    font-weight: bold;
+}
+
+ul {
+    top: 0;
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+
+footer{
+
 }
 
 @media (min-width:480px) {
