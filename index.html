@@ -10,7 +10,10 @@
 </head>
 <body>
     <div class="content">
-        <div class="header"></div>
+        <div class="header">
+            <img src="css/assets/imgHeaderPeg2.jpg" class="img-header">
+            <h1 class="text-header"> PEG SOLITARIE </h1>
+        </div>
         <div class="menu">
             <button id="menu-save-btn" class="menu-btn">Save</button>
             <button id="menu-load-btn" class="menu-btn">Load</button>
@@ -18,7 +21,10 @@
             <button id="menu-instruccions-btn" class="menu-btn">Ranking</button>
         </div>
         <div id="board"></div>
-        <div id="points"></div>
+        <div id="score">
+            <p class="score-text">Score</p>
+            <div id="points"></div>
+        </div>
         <div id="overlay" class="overlay-disabled">
             <div id="popup-result" class="popup-hide">
                 <h1 id="popup-text" class="popup-result-text"></h1>
@@ -31,8 +37,8 @@
             </div>
         </div>
         <footer>
-            <p> Created by Ivan Jukonis</p>
-            <p> LPPA 2019</p>
+            <p id="footer-text-id1" class="footer-text"> Created by Ivan Jukonis</p>
+            <p id="footer-text-id2" class="footer-text"> LPPA 2019</p>
         </footer>
     </div> 
 </body>
