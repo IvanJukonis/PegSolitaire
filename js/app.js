@@ -356,9 +356,10 @@ var loadSavedScores = function() {
 
 var generateScoreTable = function() {
   var html = '<ul>'
+  html += '<h1 class="ranking-text"> Top 7 BEST SCORES </h1>'
   for(let i = 0; i < savedScores.length; i++) {
     html += '<li>'
-    html += savedScores[i].name + ' ' + savedScores[i].score + ' ' + savedScores[i].date
+    html += 'Name: ' + savedScores[i].name + ' | Score: ' + savedScores[i].score + ' | Date: ' + savedScores[i].date
     html += '</li>'
   }
   html += '</ul>'

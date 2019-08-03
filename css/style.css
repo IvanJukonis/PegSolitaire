@@ -229,7 +229,7 @@ body {
     color: #27262c;
 }
 
-#popup-text{
+#popup-text {
     margin-top: 5px;
     padding-top: 15px;
 }
@@ -282,17 +282,20 @@ body {
 }
 
 #popup-ranking {
-    padding: 1rem 2rem 1.15rem;
+    padding-top: 35px;
+    padding-bottom: 50px;
     background: transparent;
     align-content: center;
     text-align:center;
-    text-transform: uppercase;
-    margin: auto;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
-    color: #27262c;
-    text-shadow: 0 -1px 0 #ef816c;
-    font-weight: bold;
+    width: 600px;
+}
+
+.ranking-text {
+    font-family: fantasy;
+    font-size: 30px;
+    color: #17202A;
 }
 
 ul {
@@ -302,6 +305,13 @@ ul {
 	justify-content: center;
     text-align: center;
     align-content: center;
+    font-family: fantasy;
+    font-size: 20px;
+    color: #17202A;
+}
+
+li {
+    margin: 5px;
 }
 
 footer {
