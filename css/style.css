@@ -215,25 +215,25 @@ ul{
 
 @media (min-width:480px) {
     #board button {
-        width: 10px;
-        height: 10px;
-        border-radius: 10px;
-    }
-}
-
-@media (min-width:768px) {
-    #board button {
         width: 20px;
         height: 20px;
         border-radius: 20px;
     }
 }
 
+@media (min-width:768px) {
+    #board button {
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+    }
+}
+
 @media (min-width:900px) {
     #board button {
-        width: 30px;
-        height: 30px;
-        border-radius: 30px;
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
     }
 }
 
