@@ -256,7 +256,7 @@ var changeResult = function (result){
 //get score
 var popupScore = function(currentPoints){ 
   finalScore = document.getElementById('popup-final-score') 
-  finalScore.innerHTML = '<h1> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
+  finalScore.innerHTML = '<h1 class="popup-result-text"> Your final score is: ' + currentPoints + ' !Great Job!</h1>'
 }
 
 //Show or hide popup
@@ -297,12 +297,12 @@ var formBtn = function(){
 var popupScoreShow = function (){
   var html = '<form id="form-score">'
   html += '<div class="form-box" data-errormsg="">'
-  html += '<label for="input-name">Name</label>'
+  html += '<label for="input-name" class="text-label">Enter Name</label>'
   html += '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
   html += '</div>'
   html += '<div class="form-end-text"></div>'
   html += '</form>'
-  html += '<button id="form-save-btn">Save</button>'
+  html += '<button id="form-save-btn" class="popup-btn">Save</button>'
   return html
 }
 

@@ -23,7 +23,7 @@ body {
 
 .text-header {
     font-family: fantasy;
-    font-size: 25px;
+    font-size: 45px;
     color: #ef816c;
     margin-left: 5px;
 }
@@ -204,7 +204,7 @@ body {
     position: absolute;
     visibility: visible;
     top: 40%;
-    width: 50%;
+    width: 30%;
     background-color: #FFF;
 }
 
@@ -213,13 +213,72 @@ body {
     background: transparent;
     text-align:center;
     text-transform: uppercase;
-    min-width: 80px;
+    min-width: 50px;
     margin: auto;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
     color: #27262c;
     text-shadow: 0 -1px 0 #ef816c;
     font-weight: bold;
+}
+
+.popup-result-text {
+    margin: 5px;
+    font-family: fantasy;
+    font-size: 25px;
+    color: #27262c;
+}
+
+#popup-text{
+    margin-top: 5px;
+    padding-top: 15px;
+}
+
+.popup-btn {
+    margin: 7px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    height: 40px;
+    width: 100px;
+    outline: none;
+    color: #fff;
+    background-color:rgb(43, 45, 56);
+    border: none;
+    border-radius: 10px;
+    font-family: Verdana;
+    font-size: 15px;
+}
+
+.text-label {
+    margin: 10px;
+    font-family: fantasy;
+    font-size: 20px;
+    color: #27262c;
+}
+
+#input-name {
+    width: 40%;
+    height: 30px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.popup-btn:hover {
+    background-color: hsl(120, 4%, 29%)
+}
+  
+.popup-btn:active {
+    background-color: hsl(120, 4%, 29%);
+    
+    transform: translateY(4px);
+}
+
+#form-save-btn {
+    margin-bottom: 30px;
 }
 
 #popup-ranking {
@@ -247,44 +306,38 @@ ul {
 
 footer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #ef816c;
     font-family: fantasy;
     font-size: 25px;
     margin-top: 20px;
 }
 
-#footer-text-id1 {
-    padding-left: 400px;
-}
-
-#footer-text-id2 {
-    padding-right: 500px;
-}
-
 @media (min-width:480px) {
     #board button {
-        width: 20px;
-        height: 20px;
-        border-radius: 20px;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
     }
 }
 
 @media (min-width:768px) {
     #board button {
-        width: 25px;
-        height: 25px;
-        border-radius: 25px;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
     }
 }
 
-@media (min-width:900px) {
+@media (max-width:900px) {
     #board button {
         width: 35px;
         height: 35px;
         border-radius: 35px;
     }
+
 }
 
 @media (min-width:1024px) {
@@ -300,15 +353,6 @@ footer {
         width: 40px;
         height: 40px;
         border-radius: 40px;
-    }
-
-    
+    } 
 }
 
-@media (min-width:1250px) {
-    #board button {
-        width: 40px;
-        height: 40px;
-        border-radius: 40px;
-    }
-}
