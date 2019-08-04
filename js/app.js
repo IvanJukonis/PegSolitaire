@@ -285,12 +285,6 @@ var addButtonPopupResetEventHandlers = function (popupReset) {
     popupReset.onclick = refreshPage
 }
 
-//Save btn from form
-var formBtn = function(){
-  var formBtnSave = document.getElementById('form-save-btn')
-  addbtnFormEventHandlers(formBtnSave)
-}
-
 //#region Popup --> Score functionality
 
 //Open form
@@ -345,6 +339,7 @@ var saveScore = function(){
   }
   localStorage.setItem('savedScores', JSON.stringify(savedScores))
   overlayAction()
+  refreshPage()
 }
 
 var loadSavedScores = function() {
@@ -371,7 +366,6 @@ var generateScoreTable = function() {
 var openPopupScore = function() {
   var divForm = document.getElementById('inner-form')
   if (divForm.className == 'form-enabled') {
-    console.log('asd')
     divForm.innerHTML = ''
     divForm.className = 'form-disabled'
   }

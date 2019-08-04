@@ -22,51 +22,49 @@ body {
 }
 
 .text-header {
-    font-family: fantasy;
     font-size: 45px;
-    color: #ef816c;
     margin-left: 5px;
+    color: #ef816c;
+    font-family: fantasy;
 }
 
 .menu {
-    display: flex;
-    position: relative; 
-    flex-wrap: wrap;
+    display: flex; 
     flex-direction: row;
+    flex-wrap: wrap;
     align-self: center;
 }
 
 .menu button {
-    position: relative;
     display: flex;
     justify-content: center;
     margin: 20px;
 	padding: 1rem 2rem 1.15rem;
-    text-transform: uppercase;
     min-width: 200px;
     background: transparent;
-    border: none;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
     color: #27262c;
     animation: spring 300ms ease-out;
+    border: none;
+    cursor: pointer;
     text-shadow: 0 -1px 0 #ef816c;
     font-family: fantasy;
     font-size: 25px;
-    cursor: pointer;
+    text-transform: uppercase;
 }
 
 .menu button:active {
-  transform: translateY(4px);
+    transform: translateY(4px);
 }
 
 #board {
     display: flex;
-    margin: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding:40px;
+    margin: auto;
+    padding: 40px;
 }
 
 .game {
@@ -78,33 +76,33 @@ body {
 }
 
 .ball {
-    background-color: #ef816c;
-    border: 2px solid #17202A;
     width: 10px;
     height: 10px;
     border-radius: 20px;
     margin: 5px;
+    background-color: #ef816c;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+    border: 2px solid #17202A;
 }
   
 .empty {
-    background-color: #ffffff;
-    border: 2px solid #17202A;
     width: 30px;
     height: 30px;
     border-radius: 20px;
     margin: 5px;
+    background-color: #ffffff;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+    border: 2px solid #17202A;
 }
   
 .hidden {
     visibility: hidden;
-    border: 2px solid #17202A;
     width: 30px;
     height: 30px;
-    border-radius: 20px;
     margin: 5px;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+    border: 2px solid #17202A;
+    border-radius: 20px;
 }
 
 .ball:hover {
@@ -112,23 +110,23 @@ body {
 }
 
 .ballSelected {
-    background-color: rgb(255, 81, 0);
-    border: 2px solid #17202A;
     width: 30px;
     height: 30px;
-    border-radius: 20px;
     margin: 5px;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+    background-color: rgb(255, 81, 0);
+    border: 2px solid #17202A;
+    border-radius: 20px;
 }
 
 .suggestions {
-    background-color:rgb(41, 60, 145);
-    border: 2px solid #17202A;
+    margin: 5px;
     width: 30px;
     height: 30px;
-    border-radius: 20px;
-    margin: 5px;
+    background-color:rgb(41, 60, 145);
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
+    border: 2px solid #17202A;
+    border-radius: 20px;
 }
 
 #score {
@@ -139,18 +137,18 @@ body {
 }
 
 .score-text {
+    color: #ef816c;
     font-family: fantasy;
     font-size: 25px;
-    color: #ef816c;
 }
 
 #points {
     text-align: center;
+    width: 40px;
+    height: 20px;
     padding: 1rem 2rem 1.15rem;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
-    width: 40px;
-    height: 20px;
     color: #27262c;
     text-shadow: 0 -1px 0 #ef816c;
     font-family: fantasy;
@@ -158,29 +156,29 @@ body {
 }
 
 .overlay-disabled {
-	background: rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+	justify-content: center;
+	visibility: hidden;
 	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
-	right: 0;
-	align-items: center;
-	justify-content: center;
-	display: flex;
-	visibility: hidden;
+    right: 0;
+    background: rgba(0,0,0,.3);
 }
 
 .overlay-enabled {
-    background: rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    visibility: visible;
 	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	align-items: center;
-	justify-content: center;
-	display: flex;
-    visibility: visible;
+	background: rgba(0,0,0,.3);
 }
 
 .popup-hide {
@@ -202,23 +200,22 @@ body {
 
 #popup-result {
     padding: 1rem 2rem 1.15rem;
-    background: transparent;
-    text-align:center;
-    text-transform: uppercase;
-    min-width: 50px;
     margin: auto;
+    background: transparent;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
     color: #27262c;
+    text-align:center;
+    text-transform: uppercase;
     text-shadow: 0 -1px 0 #ef816c;
     font-weight: bold;
 }
 
 .popup-result-text {
     margin: 5px;
+    color: #27262c;
     font-family: fantasy;
     font-size: 25px;
-    color: #27262c;
 }
 
 #popup-text {
@@ -229,25 +226,25 @@ body {
 .popup-btn {
     margin: 7px;
     margin-bottom: 15px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
     height: 40px;
     width: 100px;
     outline: none;
-    color: #fff;
     background-color:rgb(43, 45, 56);
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
     font-family: Verdana;
     font-size: 15px;
 }
 
 .text-label {
     margin: 10px;
+    color: #27262c;
     font-family: fantasy;
     font-size: 20px;
-    color: #27262c;
 }
 
 #input-name {
@@ -265,7 +262,6 @@ body {
   
 .popup-btn:active {
     background-color: hsl(120, 4%, 29%);
-    
     transform: translateY(4px);
 }
 
@@ -274,32 +270,33 @@ body {
 }
 
 #popup-ranking {
+    align-content: center;
+    text-align:center;
+    width: 600px;
     padding-top: 35px;
     padding-bottom: 50px;
     background: transparent;
-    align-content: center;
-    text-align:center;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
-    width: 600px;
 }
 
 .ranking-text {
+    margin-top: 20px;
+    color: #17202A;
     font-family: fantasy;
     font-size: 30px;
-    color: #17202A;
 }
 
 ul {
-    top: 0;
     display: flex;
     flex-direction: column;
 	justify-content: center;
     text-align: center;
     align-content: center;
-    font-family: fantasy;
-    font-size: 20px;
+    top: 0;
     color: #17202A;
+    font-family: fantasy;
+    font-size: 20px; 
 }
 
 li {
@@ -311,10 +308,10 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
     color: #ef816c;
     font-family: fantasy;
     font-size: 25px;
-    margin-top: 20px;
 }
 
 @media (min-width:480px) {
