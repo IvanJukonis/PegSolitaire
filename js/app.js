@@ -1,4 +1,6 @@
-//BOARDS
+//#region Board Representation
+
+//Board
 var board = [
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
@@ -9,6 +11,7 @@ var board = [
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined]
 ]
 
+//Return board to inital state
 var resetBoard = function () {
   board = [
     [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
@@ -21,9 +24,12 @@ var resetBoard = function () {
   ]
 }
 
+//Load board initial state
 var loadBoard = function() {
   board = JSON.parse(localStorage['board'])
 }
+
+//#endregion
 
 //#region Generate Board
 
@@ -48,7 +54,7 @@ var generateCell = function (cell, rowN, colN) {
   return html
 }
 
-//Creates label "row" and generates cells dependig on his lenght (board[i] lenght)
+//Creates div "row" (inside of div game) and generates cells dependig on his lenght (board[i] lenght)
 var generateRow = function (row, rowN) {
   var html = '<div class="row">'
   for (let j = 0; j < row.length; j++) {
@@ -58,7 +64,7 @@ var generateRow = function (row, rowN) {
   return html
 }
   
-//Creates label "game" and executes "generateRow" depending on board lenght (0-6)
+//Creates div "game" and executes "generateRow" depending on board lenght (0-6)
 var generateBoard = function () {
   var html = '<div class="game">'
   for (i = 0; i < board.length; i++) {
@@ -73,8 +79,6 @@ var generateBoard = function () {
 //#region Ball selection and suggestions
 
 var selectedBall = { x: undefined, y: undefined }
-
-var suggestions = []
 
 //Gives all balls the funciton selectBall (on click)
 var addBallsEventHandlers = function (Balls) {
@@ -113,6 +117,9 @@ var getElement = function (id) {
   var element = document.getElementById(id)
   return element || {}
 }
+
+//Array will contain all possible movements
+var suggestions = []
 
 //executed on selectBall
 var showSuggestions = function () {
@@ -164,7 +171,7 @@ var selectBall = function (evt) {
       selectedBall.x = undefined
       selectedBall.y = undefined
     }
-    //Changes values from array selectedBall and  ball class
+    //Changes values from array selectedBall and ball class
     else {
       selectedBall.x = parseInt(pos.x)
       selectedBall.y = parseInt(pos.y)
@@ -178,9 +185,7 @@ var selectBall = function (evt) {
 
 //#region Check victory or defeat
 
-var allSuggestions = []
-
-//Check if player won or lost
+//Save all near balls
 var getNearBall = function(x, y) {
   var near = {
     above: getElement(createId(x - 1, y)),
@@ -191,6 +196,7 @@ var getNearBall = function(x, y) {
   return near 
 }
 
+//Save balls next to near balls
 var getPossibleBall = function(x, y) {
   var possible = {
     above: getElement(createId(x - 2, y)),
@@ -201,6 +207,9 @@ var getPossibleBall = function(x, y) {
   return possible 
 }
 
+var allSuggestions = []
+
+//Check if there is a possible suggestion
 var checkResult = function () {
   var balls = document.getElementsByClassName('ball')
   allSuggestions = []
@@ -235,8 +244,6 @@ var checkResult = function () {
 
 //#region Popup result, form and ranking
 
-var savedScores = []
-
 //Show or hide overlay
 var overlayAction = function() {
   overlay = document.getElementById('overlay')
@@ -254,13 +261,13 @@ var changeResult = function (result) {
   text.innerHTML = result
 }
 
-//get score
+//Get score
 var popupScore = function(currentPoints) { 
   finalScore = document.getElementById('popup-final-score') 
   finalScore.innerHTML = '<p class="popup-result-text"> Your final score is: ' + currentPoints + ' !Great Job!</p>'
 }
 
-//Show or hide popup
+//Show or hide popup result
 var popupAction = function(result, currentPoints) {
   var popup = document.getElementById('popup-result')
     if (popup.className === 'popup-hide') {
@@ -271,12 +278,11 @@ var popupAction = function(result, currentPoints) {
     }
     else {
       popup.className = 'popup-hide'
-      popupScore(currentPoints)
       overlayAction()
     }
 }
 
-
+//Refresh page function
 var refreshPage = function() {
   location.reload()
 }
@@ -300,7 +306,7 @@ var popupScoreShow = function () {
   return html
 }
 
-//Get today date to save on ranking
+//Get today date
 var getDateToSave = function() {
   var date = new Date()
   var yyyy = date.getFullYear()
@@ -316,12 +322,14 @@ var getDateToSave = function() {
   return todayDate
 }
 
-//Order ranking by score and then by date
+//Order ranking by score then by date
 var rankingOrder = function(a, b) {
   return b.score - a.score || new Date(b.date) - new Date(a.date) 
 }
 
-//Score 
+var savedScores = []
+
+//Save objects on array
 var saveScore = function() {
   var nameTxt = document.getElementById('input-name').value
   if (nameTxt.length < 3) {
@@ -342,6 +350,7 @@ var saveScore = function() {
   refreshPage()
 }
 
+//Load array savedScores from local storage
 var loadSavedScores = function() {
   savedScores =  JSON.parse(localStorage.getItem('savedScores'))
   if (savedScores === null) {
@@ -349,6 +358,7 @@ var loadSavedScores = function() {
   }
 }
 
+//Generate ranking table
 var generateScoreTable = function() {
   var html = '<ul>'
   html += '<p class="ranking-text"> Top 7 BEST SCORES </p>'
@@ -394,16 +404,15 @@ var returnToPage = function () {
 
 //#endregion
 
-
 //#region Ball movement and points
 
 var currentPoints = 0
 
-var pointsPerMovemment = 10
-
 var changePoints = function() { 
   return '<h1>' + currentPoints + '</h1>'
 }
+
+var pointsPerMovemment = 10
 
 var moveBall = function(evt) {
   var id = evt.target.id
@@ -507,10 +516,10 @@ var pressButton = function (evt) {
   }
 }
 
-
 //#endregion
 
-//Init Function
+//#region Init
+
 var init = function () {
   var boardElement = document.getElementById('board')
   boardElement.innerHTML = generateBoard()
@@ -530,5 +539,7 @@ var init = function () {
   rankingReturn.onclick = returnToPage
   loadSavedScores()
 }
+
+//#endregion
 
 window.onload = init
