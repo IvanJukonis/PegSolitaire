@@ -370,19 +370,19 @@ var generateScoreTable = function() {
 
 var openPopupScore = function() {
   var divForm = document.getElementById('inner-form')
-  var popupResult = document.getElementById('popup-result')
-  console.log(popupResult)
-  if (popupResult.className === 'popup-show') {
-    popupResult.className = 'popup-show-form'
+  if (divForm.className == 'form-enabled') {
+    console.log('asd')
+    divForm.innerHTML = ''
+    divForm.className = 'form-disabled'
   }
   else {
-    popupResult.className = 'popup-hide'
-  }
+  divForm.className = 'form-enabled'
   divForm.innerHTML = popupScoreShow()
   document.getElementById('form-save-btn').onclick = saveScore
+  }
 }
 
-//Save btn from form
+//Save btn from popup
 var addButtonPopupSaveEventHandlers = function (popupSave) {
   popupSave.onclick = openPopupScore
 }

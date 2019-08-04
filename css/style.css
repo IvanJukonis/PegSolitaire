@@ -200,14 +200,6 @@ body {
     background-color: #FFF;
 }
 
-.popup-show-form {
-    position: absolute;
-    visibility: visible;
-    top: 40%;
-    width: 30%;
-    background-color: #FFF;
-}
-
 #popup-result {
     padding: 1rem 2rem 1.15rem;
     background: transparent;
