@@ -1,3 +1,4 @@
+//BOARDS
 var board = [
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
@@ -8,7 +9,7 @@ var board = [
   [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined]
 ]
 
-var resetBoard = function (){
+var resetBoard = function () {
   board = [
     [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
     [undefined, undefined, { value: 1 }, { value: 1 }, { value: 1 }, undefined, undefined],
@@ -20,7 +21,7 @@ var resetBoard = function (){
   ]
 }
 
-var loadBoard = function(){
+var loadBoard = function() {
   board = JSON.parse(localStorage['board'])
 }
 
@@ -180,7 +181,7 @@ var selectBall = function (evt) {
 var allSuggestions = []
 
 //Check if player won or lost
-var getNearBall = function(x, y){
+var getNearBall = function(x, y) {
   var near = {
     above: getElement(createId(x - 1, y)),
     left: getElement(createId(x, y - 1)),
@@ -190,7 +191,7 @@ var getNearBall = function(x, y){
   return near 
 }
 
-var getPossibleBall = function(x, y){
+var getPossibleBall = function(x, y) {
   var possible = {
     above: getElement(createId(x - 2, y)),
     left: getElement(createId(x, y - 2)),
@@ -222,11 +223,11 @@ var checkResult = function () {
       }
     }
   }
-  if(allSuggestions.length === 0){
-    return true;
+  if (allSuggestions.length === 0) {
+    return true
   }
-  else{
-    return false;
+  else {
+    return false
   }
 }
 
@@ -248,53 +249,52 @@ var overlayAction = function() {
 }
 
 //Get text
-var changeResult = function (result){
+var changeResult = function (result) {
   var text = document.getElementById('popup-text')
   text.innerHTML = result
 }
 
 //get score
-var popupScore = function(currentPoints){ 
+var popupScore = function(currentPoints) { 
   finalScore = document.getElementById('popup-final-score') 
   finalScore.innerHTML = '<p class="popup-result-text"> Your final score is: ' + currentPoints + ' !Great Job!</p>'
 }
 
 //Show or hide popup
 var popupAction = function(result, currentPoints) {
-  var popup = document.getElementById('popup-result');
+  var popup = document.getElementById('popup-result')
     if (popup.className === 'popup-hide') {
-      popup.className = 'popup-show';
+      popup.className = 'popup-show'
       popupScore(currentPoints)
       changeResult(result)
       overlayAction()
     }
     else {
-      popup.className = 'popup-hide';
+      popup.className = 'popup-hide'
       popupScore(currentPoints)
       overlayAction()
     }
 }
 
 
-var refreshPage = function(){
+var refreshPage = function() {
   location.reload()
 }
 
 //Play again button from popup
 var addButtonPopupResetEventHandlers = function (popupReset) {
-    popupReset.onclick = refreshPage
+  popupReset.onclick = refreshPage
 }
 
 //#region Popup --> Score functionality
 
 //Open form
-var popupScoreShow = function (){
+var popupScoreShow = function () {
   var html = '<form id="form-score">'
   html += '<div class="form-box" data-errormsg="">'
   html += '<label for="input-name" class="text-label">Enter Name</label>'
   html += '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
   html += '</div>'
-  html += '<div class="form-end-text"></div>'
   html += '</form>'
   html += '<button id="form-save-btn" class="popup-btn">Save</button>'
   return html
@@ -306,10 +306,10 @@ var getDateToSave = function() {
   var yyyy = date.getFullYear()
   var dd = date.getDate()
   var mm = (date.getMonth() + 1)
-  if(dd < 10) {
+  if (dd < 10) {
     dd = '0' + dd
   }
-  if(mm < 10) {
+  if (mm < 10) {
     mm = '0' + mm
   }
   var todayDate = yyyy + '-' + mm + '-' + dd
@@ -322,9 +322,9 @@ var rankingOrder = function(a, b) {
 }
 
 //Score 
-var saveScore = function(){
+var saveScore = function() {
   var nameTxt = document.getElementById('input-name').value
-  if(nameTxt.length < 3) {
+  if (nameTxt.length < 3) {
     alert('Name length invalid')
   }
   var newScore = {
@@ -334,7 +334,7 @@ var saveScore = function(){
   }
   savedScores.push(newScore)
   savedScores.sort(rankingOrder)
-  if(savedScores.length > 7) {
+  if (savedScores.length > 7) {
     savedScores = savedScores.slice(0,7)
   }
   localStorage.setItem('savedScores', JSON.stringify(savedScores))
@@ -344,7 +344,7 @@ var saveScore = function(){
 
 var loadSavedScores = function() {
   savedScores =  JSON.parse(localStorage.getItem('savedScores'))
-  if(savedScores === null) {
+  if (savedScores === null) {
     savedScores = []
   }
 }
@@ -352,7 +352,7 @@ var loadSavedScores = function() {
 var generateScoreTable = function() {
   var html = '<ul>'
   html += '<p class="ranking-text"> Top 7 BEST SCORES </p>'
-  for(let i = 0; i < savedScores.length; i++) {
+  for (let i = 0; i < savedScores.length; i++) {
     html += '<li>'
     html += 'Name: ' + savedScores[i].name + ' | Score: ' + savedScores[i].score + ' | Date: ' + savedScores[i].date
     html += '</li>'
@@ -370,9 +370,9 @@ var openPopupScore = function() {
     divForm.className = 'form-disabled'
   }
   else {
-  divForm.className = 'form-enabled'
-  divForm.innerHTML = popupScoreShow()
-  document.getElementById('form-save-btn').onclick = saveScore
+    divForm.className = 'form-enabled'
+    divForm.innerHTML = popupScoreShow()
+    document.getElementById('form-save-btn').onclick = saveScore
   }
 }
 
@@ -381,13 +381,13 @@ var addButtonPopupSaveEventHandlers = function (popupSave) {
   popupSave.onclick = openPopupScore
 }
 
-var returnToPage = function (){
+var returnToPage = function () {
   var popUpClose = document.getElementById('popup-ranking')
   if (popUpClose.className === 'popup-show') {
-    popUpClose.className = 'popup-hide';
+    popUpClose.className = 'popup-hide'
   }
   else {
-    popUpClose.className = 'popup-hide';
+    popUpClose.className = 'popup-hide'
   }
   overlayAction()
 }
@@ -401,15 +401,15 @@ var currentPoints = 0
 
 var pointsPerMovemment = 10
 
-var changePoints = function(){ 
+var changePoints = function() { 
   return '<h1>' + currentPoints + '</h1>'
 }
 
 var moveBall = function(evt) {
   var id = evt.target.id
   var pos = getPositionFromId(id)
-  if(pos.x !== undefined && pos.y !== undefined){
-    if(suggestions.includes(id)) /*if element is on array return true (include)*/{
+  if (pos.x !== undefined && pos.y !== undefined){
+    if (suggestions.includes(id)) /*if element is on array return true (include)*/{
       //ball selected
       var oldRow = selectedBall.x
       var oldCol= selectedBall.y
@@ -433,7 +433,6 @@ var moveBall = function(evt) {
     //Check if player won or lost
     if (checkResult())
     {
-      console.log(checkResult())
       if (currentPoints == 310){
         victory = 'YOU WIN! CONGRATULATIONS'
         popupAction(victory, currentPoints)
@@ -458,11 +457,11 @@ var addEmptyEventHandlers = function (empty) {
 
 var addButtonsEventHandlers = function (buttons) {
   for (let i = 0; i < buttons.length; i++) {
-    buttons[i].onclick = pressButton;
+    buttons[i].onclick = pressButton
   }
 }
 
-var pressButton = function (evt){
+var pressButton = function (evt) {
   var id = evt.target.id
   //RESET BTN
   if (id == 'menu-reset-btn') {
@@ -473,18 +472,18 @@ var pressButton = function (evt){
     init()  
   }
   //SAVE BTN
-  else if (id == 'menu-save-btn'){
+  else if (id == 'menu-save-btn') {
     //Save board
-    var JSONreadyBoard = JSON.stringify(board);
-    localStorage.setItem('board', JSONreadyBoard);
+    var JSONreadyBoard = JSON.stringify(board)
+    localStorage.setItem('board', JSONreadyBoard)
     console.log(JSON.parse(localStorage['board']))
     //Save points
-    var JsoncurrentPoints = JSON.stringify(currentPoints);
-    localStorage.setItem('currentPoints', JsoncurrentPoints);
+    var JsoncurrentPoints = JSON.stringify(currentPoints)
+    localStorage.setItem('currentPoints', JsoncurrentPoints)
     console.log(JSON.parse(localStorage['currentPoints']))
   }
   //LOAD BTN
-  else if (id == 'menu-load-btn'){
+  else if (id == 'menu-load-btn') {
     if (JSON.parse(localStorage['board'])) {
     loadBoard(board)
     currentPoints = JSON.parse(localStorage['currentPoints'])
@@ -494,14 +493,14 @@ var pressButton = function (evt){
     }
   }
   //RANKING BTN
-  else if (id == 'menu-ranking-btn'){
+  else if (id == 'menu-ranking-btn') {
     var newpopup = document.getElementById('popup-ranking')
     var innerPopup = document.getElementById('popup-ranking-inner')
     if (newpopup.className === 'popup-hide') {
-      newpopup.className = 'popup-show';
+      newpopup.className = 'popup-show'
     }
     else {
-      newpopup.className = 'popup-hide';
+      newpopup.className = 'popup-hide'
     }
     innerPopup.innerHTML = generateScoreTable()
     overlayAction()
@@ -510,8 +509,6 @@ var pressButton = function (evt){
 
 
 //#endregion
-
-//FORM
 
 //Init Function
 var init = function () {
@@ -533,4 +530,5 @@ var init = function () {
   rankingReturn.onclick = returnToPage
   loadSavedScores()
 }
+
 window.onload = init
