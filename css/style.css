@@ -314,40 +314,39 @@ footer {
     font-size: 25px;
 }
 
-@media (min-width:480px) {
+@media (min-width: 480px) {
     #board button {
-        width: 5px;
-        height: 5px;
-        border-radius: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
     }
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
     #board button {
-        width: 5px;
-        height: 5px;
-        border-radius: 5px;
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
     }
 }
 
-@media (max-width:900px) {
+@media (min-width: 900px) {
+    #board button {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
     #board button {
         width: 35px;
         height: 35px;
         border-radius: 35px;
     }
-
 }
 
-@media (min-width:1024px) {
-    #board button {
-        width: 40px;
-        height: 40px;
-        border-radius: 40px;
-    }
-}
-
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
     #board button {
         width: 40px;
         height: 40px;
