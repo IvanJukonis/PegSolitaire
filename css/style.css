@@ -256,6 +256,18 @@ body {
     box-sizing: border-box;
 }
 
+.text-form-show
+{
+    color: rgb(41, 60, 145);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+.text-form-hide
+{
+    visibility: hidden;
+}
+
 .popup-btn:hover {
     background-color: hsl(120, 4%, 29%)
 }
@@ -316,9 +328,9 @@ footer {
 
 @media (min-width: 480px) {
     #board button {
-        width: 20px;
-        height: 20px;
-        border-radius: 20px;
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
     }
 }
 

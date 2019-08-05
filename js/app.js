@@ -300,6 +300,7 @@ var popupScoreShow = function () {
   html += '<div class="form-box" data-errormsg="">'
   html += '<label for="input-name" class="text-label">Enter Name</label>'
   html += '<input type="text" id="input-name" autofocus placeholder="Name" tabindex="1"/>'
+  html += '<div id="text-form" class="text-form-hide"><p> *Name must contain between 3 and 10 characters </p></div>'
   html += '</div>'
   html += '</form>'
   html += '<button id="form-save-btn" class="popup-btn">Save</button>'
@@ -332,22 +333,26 @@ var savedScores = []
 //Save objects on array
 var saveScore = function() {
   var nameTxt = document.getElementById('input-name').value
-  if (nameTxt.length < 3) {
-    alert('Name length invalid')
+  var formTxt = document.getElementById('text-form')
+  if (nameTxt.length < 3 || nameTxt.length > 10) {
+    formTxt.className = 'text-form-show'
   }
-  var newScore = {
-    name: nameTxt,
-    score: currentPoints,
-    date: getDateToSave()
+  else{
+    formTxt.className = 'text-form-hide'
+    var newScore = {
+     name: nameTxt,
+      score: currentPoints,
+      date: getDateToSave()
+    }
+    savedScores.push(newScore)
+    savedScores.sort(rankingOrder)
+    if (savedScores.length > 7) {
+      savedScores = savedScores.slice(0,7)
+    }
+    localStorage.setItem('savedScores', JSON.stringify(savedScores))
+    overlayAction()
+    refreshPage()
   }
-  savedScores.push(newScore)
-  savedScores.sort(rankingOrder)
-  if (savedScores.length > 7) {
-    savedScores = savedScores.slice(0,7)
-  }
-  localStorage.setItem('savedScores', JSON.stringify(savedScores))
-  overlayAction()
-  refreshPage()
 }
 
 //Load array savedScores from local storage
