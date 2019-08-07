@@ -159,12 +159,12 @@ body {
 .overlay-disabled {
     display: flex;
     align-items: center;
-	justify-content: center;
-	visibility: hidden;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
+    justify-content: center;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
     right: 0;
     background: rgba(0,0,0,.3);
 }
@@ -172,14 +172,14 @@ body {
 .overlay-enabled {
     display: flex;
     align-items: center;
-	justify-content: center;
+    justify-content: center;
     visibility: visible;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0,0,0,.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.3);
 }
 
 .popup-hide {
