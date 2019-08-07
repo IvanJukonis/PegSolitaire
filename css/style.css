@@ -40,7 +40,7 @@ body {
     display: flex;
     justify-content: center;
     margin: 5px;
-	padding: 1rem 2rem 1.15rem;
+    padding: 1rem 2rem 1.15rem;
     width: 80px;
     background: transparent;
     background-image: url('http://scottyzen.com/cp/button.png');
@@ -301,7 +301,7 @@ body {
 #ranking-list {
     display: flex;
     flex-direction: column;
-	justify-content: center;
+    justify-content: center;
     text-align: center;
     align-content: center;
     top: 0;
