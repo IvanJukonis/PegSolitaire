@@ -1,5 +1,8 @@
 var sendEmail = function() {
-    
+    var name = document.getElementById('input-name').value
+    var email = document.getElementById('input-email').value
+    var message = document.getElementById('input-message').value
+    window.location.href = 'mailto:ivanjukonis@hotmail.com?subject=Peg solitarie contact page - Sent by ' + name + '&body=' + message + '. Respond to: ' + email 
 }
 
 var returnIndex = function() {
@@ -10,21 +13,20 @@ var addFormButtonsEventHandlers = function (formBtn) {
     for (let i = 0; i < formBtn.length; i++) {
         formBtn[i].onclick = pressButtonForm
     }
-  }
+}
   
 var pressButtonForm = function (evt) {
     var id = evt.target.id
     if (id == 'return-index-btn') {
-      returnIndex()
+        returnIndex()  
     }
     else if (id == 'send-form-btn') {
-      sendEmail()
+        sendEmail()
     }
 }
 
-
 var init = function() {
-    formBtn = document.getElementById('form-btn')
+    formBtn = document.getElementsByClassName('form-btn')
     addFormButtonsEventHandlers(formBtn)
 }
 
