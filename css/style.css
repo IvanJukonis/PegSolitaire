@@ -240,6 +240,19 @@ body {
     font-size: 15px;
 }
 
+.popup-btn:hover {
+    background-color: hsl(120, 4%, 29%)
+}
+  
+.popup-btn:active {
+    background-color: hsl(120, 4%, 29%);
+    transform: translateY(4px);
+}
+
+#form-save-btn {
+    margin-bottom: 30px;
+}
+
 .text-label {
     margin: 10px;
     color: #27262c;
@@ -266,19 +279,6 @@ body {
 .text-form-hide
 {
     visibility: hidden;
-}
-
-.popup-btn:hover {
-    background-color: hsl(120, 4%, 29%)
-}
-  
-.popup-btn:active {
-    background-color: hsl(120, 4%, 29%);
-    transform: translateY(4px);
-}
-
-#form-save-btn {
-    margin-bottom: 30px;
 }
 
 #popup-ranking {
