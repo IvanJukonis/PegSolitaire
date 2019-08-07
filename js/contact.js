@@ -1,15 +1,16 @@
 
-var returtnea = function() {
+var returnIndex = function() {
     window.location = 'index.html'
 }
 
-var volverAddEventHandler = function (volver) {
-    volver.onclick = returtnea
+var returnIndexAddEventHandler = function (returnBtn) {
+    returnBtn.onclick = returnIndex
 }
 
-var init = function(){
-volver = document.getElementById('volve')
-volverAddEventHandler(volver)
+
+var init = function() {
+    returnBtn = document.getElementById('return-index')
+    returnIndexAddEventHandler(returnBtn)
 }
 
 window.onload = init
