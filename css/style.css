@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(43, 45, 56);
+    background-color: rgb(43, 45, 56);
 }
   
 .content {
@@ -17,12 +17,12 @@ body {
 }
 
 .img-header {
-    width: 100px;
-    height: 60px;
+    width: 50px;
+    height: 30px;
 }
 
 .text-header {
-    font-size: 45px;
+    font-size: 25px;
     margin-left: 5px;
     color: #ef816c;
     font-family: fantasy;
@@ -39,9 +39,9 @@ body {
 .menu button {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 5px;
 	padding: 1rem 2rem 1.15rem;
-    min-width: 200px;
+    width: 80px;
     background: transparent;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
@@ -51,7 +51,7 @@ body {
     cursor: pointer;
     text-shadow: 0 -1px 0 #ef816c;
     font-family: fantasy;
-    font-size: 25px;
+    font-size: 15px;
     text-transform: uppercase;
 }
 
@@ -73,13 +73,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding:40px;
+    padding: 10px;
 }
 
 .ball {
-    width: 10px;
-    height: 10px;
-    border-radius: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
     margin: 5px;
     background-color: #ef816c;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
@@ -87,9 +87,9 @@ body {
 }
   
 .empty {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
     margin: 5px;
     background-color: #ffffff;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
@@ -98,9 +98,9 @@ body {
   
 .hidden {
     visibility: hidden;
-    width: 30px;
-    height: 30px;
-    margin: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 15px;
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
     border: 2px solid #17202A;
     border-radius: 20px;
@@ -337,31 +337,54 @@ a {
     font-size: 20px;
 }
 
+/*Mobile view*/
 @media (min-width: 480px) {
+    
+    .img-header {
+        width: 100px;
+        height: 60px;
+    }
+    
+    .text-header {
+        font-size: 45px;
+        margin-left: 5px;     
+    }
+   
     #board button {
         width: 25px;
         height: 25px;
         border-radius: 25px;
     }
+
+    .menu button {
+        width: 130px;
+        font-size: 20px;
+    }
+
 }
 
 @media (min-width: 768px) {
-    #board button {
-        width: 25px;
-        height: 25px;
-        border-radius: 25px;
+    
+    .menu button {
+        width: 150px;
+        font-size: 22px;
     }
-}
 
-@media (min-width: 900px) {
     #board button {
         width: 30px;
         height: 30px;
         border-radius: 30px;
     }
+    
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
+    
+    .menu button {
+        width: 160px;
+        font-size: 25px;
+    }
+    
     #board button {
         width: 35px;
         height: 35px;
@@ -369,7 +392,21 @@ a {
     }
 }
 
+@media (min-width: 1024px) {
+    
+    .menu button {
+        width: 170px;
+        font-size: 27px;
+    }
+}
+
 @media (min-width: 1200px) {
+    
+    .menu button {
+        width: 180px;
+        font-size: 30px;
+    }
+
     #board button {
         width: 40px;
         height: 40px;
