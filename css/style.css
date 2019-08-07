@@ -326,6 +326,12 @@ footer {
     font-size: 25px;
 }
 
+a {
+    margin-top: 20px;
+    color: #ef816c;
+    font-size: 20px;
+}
+
 @media (min-width: 480px) {
     #board button {
         width: 25px;
