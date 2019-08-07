@@ -365,10 +365,10 @@ var loadSavedScores = function() {
 
 //Generate ranking table
 var generateScoreTable = function() {
-  var html = '<ul>'
+  var html = '<ul id="ranking-list">'
   html += '<p class="ranking-text"> Top 7 BEST SCORES </p>'
   for (let i = 0; i < savedScores.length; i++) {
-    html += '<li>'
+    html += '<li id="ranking-list-element">'
     html += 'Name: ' + savedScores[i].name + ' | Score: ' + savedScores[i].score + ' | Date: ' + savedScores[i].date
     html += '</li>'
   }
