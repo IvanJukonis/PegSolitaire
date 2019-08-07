@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(43, 45, 56);
+    background-color: rgb(43, 45, 56);
 }
   
 .content {
@@ -62,7 +62,7 @@ body {
     height: 40px;
     width: 100px;
     outline: none;
-    background-color:#ef816c;
+    background-color: #ef816c;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -94,6 +94,6 @@ footer {
     font-size: 25px;
 }
 
-#footer-text-id2{
+#footer-text-id2 {
     text-transform: uppercase;
 }
