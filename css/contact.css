@@ -93,3 +93,7 @@ footer {
     font-family: fantasy;
     font-size: 25px;
 }
+
+#footer-text-id2{
+    text-transform: uppercase;
+}

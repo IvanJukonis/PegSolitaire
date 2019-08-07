@@ -26,6 +26,7 @@ body {
     margin-left: 5px;
     color: #ef816c;
     font-family: fantasy;
+    text-transform: uppercase;
 }
 
 .menu {
@@ -324,6 +325,10 @@ footer {
     color: #ef816c;
     font-family: fantasy;
     font-size: 25px;
+}
+
+#footer-text-id2{
+    text-transform: uppercase;
 }
 
 a {
