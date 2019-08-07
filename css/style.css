@@ -217,6 +217,7 @@ body {
     color: #27262c;
     font-family: fantasy;
     font-size: 25px;
+    text-transform: uppercase;
 }
 
 #popup-text {

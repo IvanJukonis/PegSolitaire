@@ -337,7 +337,7 @@ var saveScore = function() {
   if (nameTxt.length < 3 || nameTxt.length > 10) {
     formTxt.className = 'text-form-show'
   }
-  else{
+  else {
     formTxt.className = 'text-form-hide'
     var newScore = {
      name: nameTxt,
@@ -448,11 +448,11 @@ var moveBall = function(evt) {
     if (checkResult())
     {
       if (currentPoints == 310){
-        victory = 'YOU WIN! CONGRATULATIONS'
+        victory = 'you win! congratulations'
         popupAction(victory, currentPoints)
       }
       else{
-        defeat = 'YOU LOST! BETTER LUCK NEXT TIME'
+        defeat = 'you lost! better luck next time'
         popupAction(defeat, currentPoints)
       }
     }
