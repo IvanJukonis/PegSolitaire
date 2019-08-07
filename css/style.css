@@ -124,7 +124,7 @@ body {
     margin: 5px;
     width: 30px;
     height: 30px;
-    background-color:rgb(41, 60, 145);
+    background-color: rgb(41, 60, 145);
     box-shadow: 2px 0px 3px 1px rgba(0,0,0,0.65);
     border: 2px solid #17202A;
     border-radius: 20px;
@@ -206,7 +206,7 @@ body {
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
     color: #27262c;
-    text-align:center;
+    text-align: center;
     text-transform: uppercase;
     text-shadow: 0 -1px 0 #ef816c;
     font-weight: bold;
@@ -230,7 +230,7 @@ body {
     height: 40px;
     width: 100px;
     outline: none;
-    background-color:rgb(43, 45, 56);
+    background-color: rgb(43, 45, 56);
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -242,7 +242,7 @@ body {
 }
 
 .popup-btn:hover {
-    background-color: hsl(120, 4%, 29%)
+    background-color: hsl(120, 4%, 29%);
 }
   
 .popup-btn:active {
@@ -270,21 +270,19 @@ body {
     box-sizing: border-box;
 }
 
-.text-form-show
-{
+.text-form-show {
     color: rgb(41, 60, 145);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
 }
 
-.text-form-hide
-{
+.text-form-hide {
     visibility: hidden;
 }
 
 #popup-ranking {
     align-content: center;
-    text-align:center;
+    text-align: center;
     width: 600px;
     padding-top: 35px;
     padding-bottom: 50px;
@@ -327,7 +325,7 @@ footer {
     font-size: 25px;
 }
 
-#footer-text-id2{
+#footer-text-id2 {
     text-transform: uppercase;
 }
 
@@ -349,16 +347,16 @@ a {
         font-size: 45px;
         margin-left: 5px;     
     }
+
+    .menu button {
+        width: 130px;
+        font-size: 20px;
+    }
    
     #board button {
         width: 25px;
         height: 25px;
         border-radius: 25px;
-    }
-
-    .menu button {
-        width: 130px;
-        font-size: 20px;
     }
 
 }
