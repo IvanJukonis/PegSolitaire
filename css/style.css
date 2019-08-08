@@ -45,14 +45,14 @@ body {
     background: transparent;
     background-image: url('http://scottyzen.com/cp/button.png');
     background-size: 100% 100%;
-    color: #27262c;
-    animation: spring 300ms ease-out;
     border: none;
-    cursor: pointer;
-    text-shadow: 0 -1px 0 #ef816c;
+    color: #27262c;
     font-family: fantasy;
     font-size: 15px;
     text-transform: uppercase;
+    text-shadow: 0 -1px 0 #ef816c;
+    animation: spring 300ms ease-out;
+    cursor: pointer;
 }
 
 .menu button:active {
@@ -158,8 +158,6 @@ body {
 
 .overlay-disabled {
     display: flex;
-    align-items: center;
-    justify-content: center;
     visibility: hidden;
     position: fixed;
     top: 0;
@@ -194,7 +192,6 @@ body {
 .popup-show {
     position: absolute;
     visibility: visible;
-    top: 40%;
     width: 50%;
     background-color: #FFF;
 }
@@ -226,7 +223,7 @@ body {
 }
 
 .popup-btn {
-    margin: 7px;
+    margin: 3px;
     margin-bottom: 15px;
     height: 40px;
     width: 100px;
@@ -265,7 +262,6 @@ body {
 #input-name {
     width: 40%;
     height: 30px;
-    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
