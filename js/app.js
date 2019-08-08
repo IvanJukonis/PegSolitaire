@@ -340,7 +340,7 @@ var saveScore = function() {
   else {
     formTxt.className = 'text-form-hide'
     var newScore = {
-     name: nameTxt,
+      name: nameTxt,
       score: currentPoints,
       date: getDateToSave()
     }
@@ -451,7 +451,7 @@ var moveBall = function(evt) {
         victory = 'you win! congratulations'
         popupAction(victory, currentPoints)
       }
-      else{
+      else {
         defeat = 'you lost! better luck next time'
         popupAction(defeat, currentPoints)
       }
