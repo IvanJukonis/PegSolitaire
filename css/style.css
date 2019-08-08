@@ -358,27 +358,6 @@ footer {
         border-radius: 25px;
     }
 
-    .popup-show {
-        width: 350px;
-    }
-
-    .text-label {
-        margin: 10px;
-        font-size: 20px;
-    }
-    
-    #input-name {
-        width: 40%;
-        height: 30px;
-        border-radius: 4px;
-    }
-    
-    .text-form-show {
-        color: rgb(41, 60, 145);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 10px;
-    }
-
 }
 
 @media (min-width: 768px) {
