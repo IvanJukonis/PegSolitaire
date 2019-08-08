@@ -7,7 +7,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 250px;
+    padding-top: 20px;
 }
 
 .header {
@@ -33,7 +33,6 @@ body {
 #contact-form {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
 }
 
 .text-label {
