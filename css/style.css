@@ -336,7 +336,6 @@ footer {
 
 /*Mobile view*/
 @media (min-width: 480px) {
-    
     .img-header {
         width: 100px;
         height: 60px;
@@ -357,11 +356,9 @@ footer {
         height: 25px;
         border-radius: 25px;
     }
-
 }
 
 @media (min-width: 768px) {
-    
     .menu button {
         width: 150px;
         font-size: 22px;
@@ -430,11 +427,9 @@ footer {
     #ranking-list-element {
         margin: 5px;
     }
-
 }
 
 @media (min-width: 900px) {
-    
     .menu button {
         width: 160px;
         font-size: 25px;
@@ -445,20 +440,16 @@ footer {
         height: 35px;
         border-radius: 35px;
     }
-
 }
 
 @media (min-width: 1024px) {
-    
     .menu button {
         width: 170px;
         font-size: 27px;
     }
-
 }
 
 @media (min-width: 1200px) {
-    
     .menu button {
         width: 180px;
         font-size: 30px;
@@ -468,7 +459,6 @@ footer {
         width: 40px;
         height: 40px;
         border-radius: 40px;
-    } 
-    
+    }  
 }
 
