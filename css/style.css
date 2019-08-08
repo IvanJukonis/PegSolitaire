@@ -430,6 +430,7 @@ footer {
     #ranking-list-element {
         margin: 5px;
     }
+
 }
 
 @media (min-width: 900px) {
@@ -444,6 +445,7 @@ footer {
         height: 35px;
         border-radius: 35px;
     }
+
 }
 
 @media (min-width: 1024px) {
@@ -452,6 +454,7 @@ footer {
         width: 170px;
         font-size: 27px;
     }
+
 }
 
 @media (min-width: 1200px) {
@@ -466,5 +469,6 @@ footer {
         height: 40px;
         border-radius: 40px;
     } 
+    
 }
 
