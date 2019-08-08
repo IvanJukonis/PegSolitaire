@@ -24,10 +24,10 @@ body {
 }
 
 .text-header {
-    font-size: 45px;
     margin-left: 5px;
     color: #ef816c;
     font-family: fantasy;
+    font-size: 45px;
 }
 
 #contact-form {
@@ -61,16 +61,16 @@ body {
     margin-bottom: 30px;
     height: 40px;
     width: 100px;
-    outline: none;
     background-color: #ef816c;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
     color: rgb(43, 45, 56);
     text-align: center;
     text-decoration: none;
     font-family: Verdana;
     font-size: 15px;
+    cursor: pointer;
+    outline: none;
 }
 
 .form-btn:hover {
