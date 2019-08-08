@@ -192,7 +192,7 @@ body {
 .popup-show {
     position: absolute;
     visibility: visible;
-    width: 50%;
+    width: 350px;
     background-color: #FFF;
 }
 
@@ -213,20 +213,20 @@ body {
     margin: 5px;
     color: #27262c;
     font-family: fantasy;
-    font-size: 25px;
+    font-size: 15px;
     text-transform: uppercase;
 }
 
 #popup-text {
-    margin-top: 5px;
-    padding-top: 15px;
+    margin-top: 2px;
+    padding-top: 10px;
 }
 
 .popup-btn {
-    margin: 3px;
-    margin-bottom: 15px;
+    margin: 1px;
+    margin-bottom: 5px;
     height: 40px;
-    width: 100px;
+    width: 50px;
     outline: none;
     background-color: rgb(43, 45, 56);
     border: none;
@@ -236,7 +236,7 @@ body {
     text-align: center;
     text-decoration: none;
     font-family: Verdana;
-    font-size: 15px;
+    font-size: 10px;
 }
 
 .popup-btn:hover {
@@ -248,39 +248,41 @@ body {
     transform: translateY(4px);
 }
 
-#form-save-btn {
-    margin-bottom: 30px;
-}
-
 .text-label {
-    margin: 10px;
+    margin: 5px;
     color: #27262c;
     font-family: fantasy;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #input-name {
     width: 40%;
-    height: 30px;
+    height: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 2px;
     box-sizing: border-box;
 }
 
 .text-form-show {
+    margin-top: 3px;
     color: rgb(41, 60, 145);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
+    font-size: 7px;
 }
 
 .text-form-hide {
+    margin-top: 3px;
     visibility: hidden;
+    font-size: 7px;
+}
+
+#form-save-btn {
+    margin-bottom: 25px;
 }
 
 #popup-ranking {
     align-content: center;
     text-align: center;
-    width: 600px;
     padding-top: 35px;
     padding-bottom: 50px;
     background: transparent;
@@ -289,10 +291,10 @@ body {
 }
 
 .ranking-text {
-    margin-top: 20px;
+    margin-top: 7px;
     color: #17202A;
     font-family: fantasy;
-    font-size: 30px;
+    font-size: 17px;
 }
 
 #ranking-list {
@@ -304,11 +306,11 @@ body {
     top: 0;
     color: #17202A;
     font-family: fantasy;
-    font-size: 20px; 
+    font-size: 13px; 
 }
 
 #ranking-list-element {
-    margin: 5px;
+    margin: 2px;
 }
 
 footer {
@@ -356,6 +358,27 @@ footer {
         border-radius: 25px;
     }
 
+    .popup-show {
+        width: 350px;
+    }
+
+    .text-label {
+        margin: 10px;
+        font-size: 20px;
+    }
+    
+    #input-name {
+        width: 40%;
+        height: 30px;
+        border-radius: 4px;
+    }
+    
+    .text-form-show {
+        color: rgb(41, 60, 145);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -371,6 +394,63 @@ footer {
         border-radius: 30px;
     }
     
+    /*Popup*/
+    .popup-show {
+        width: 600px;
+    }
+
+    .popup-result-text {
+        margin: 5px;
+        font-size: 25px;
+    }
+    
+    #popup-text {
+        margin-top: 5px;
+        padding-top: 15px;
+    }
+    
+    .popup-btn {
+        margin: 3px;
+        margin-bottom: 15px;
+        height: 40px;
+        width: 100px;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .text-label {
+        margin: 10px;
+        font-size: 20px;
+    }
+    
+    #input-name {
+        width: 40%;
+        height: 30px;
+        border-radius: 4px;
+    }
+    
+    .text-form-show {
+        font-size: 10px;
+    }
+    
+    #popup-ranking {
+        padding-top: 35px;
+        padding-bottom: 50px;
+    }
+    
+    .ranking-text {
+        margin-top: 20px;
+        font-size: 30px;
+    }
+    
+    #ranking-list {
+        top: 0;
+        font-size: 20px; 
+    }
+    
+    #ranking-list-element {
+        margin: 5px;
+    }
 }
 
 @media (min-width: 900px) {
